@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="DudesPlayer.Views.SideMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DudesPlayer.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:sidebar="clr-namespace:DudesPlayer.Views.SideBar"
+             Background="{DynamicResource PrymaryBackgroundColor}"
+             xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" MaxWidth="300" >
+    <Grid Panel.ZIndex="99999">
+        <Grid Width="300">
+            <sidebar:LoginPanel x:Name="loginPanel1"  />
+        </Grid>
+        <Grid Width="0" HorizontalAlignment="Right" Name="UserPanel">
+
+            <Grid Width="300" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="56"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid Focusable="False"   Background="{DynamicResource SecondaryBackgroundColor}">
+                        <wpfui:DynamicScrollViewer   Margin=" 0 48 0 0">
+                            <StackPanel Margin="8 8 0 0" x:Name="UsersPanel" >
+                                <sidebar:UserItem/>
+                                <sidebar:UserItem/>
+                            </StackPanel>
+                        </wpfui:DynamicScrollViewer>
+                    </Grid>
+                    <wpfui:Badge VerticalAlignment="Top" Margin="0 -10 0 0" BorderThickness="0" MouseDoubleClick="OnlineHeader_MouseDoubleClick" x:Name="OnlineHeader"  Height="58" Background="{DynamicResource PrymaryHeaderColor}" materialDesign:ShadowAssist.ShadowDepth="Depth1"  materialDesign:ShadowAssist.ShadowEdges="Bottom">
+                        <TextBlock Width="300" Name="HeaderText" VerticalAlignment="Center" HorizontalAlignment="Left" Margin=" 20 4 16 4" Text="Online" FontWeight="DemiBold" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+                    </wpfui:Badge>
+                </Grid>
+                <Grid Focusable="False"  Grid.Row="1" Margin=" 0 0 0 0" x:Name="PlaylistGrid">
+                    <Grid x:Name="PlaylistPanel" Width="304"  Background="{DynamicResource SecondaryBackgroundColor}" materialDesign:ShadowAssist.ShadowEdges="Bottom">
+                        <wpfui:DynamicScrollViewer materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True" materialDesign:ScrollBarAssist.ThumbWidth="4" Margin="0 56 4 0">
+                            <StackPanel x:Name="PlaylistStack" Margin="0 0 0 48 ">
+                            </StackPanel>
+                        </wpfui:DynamicScrollViewer>
+                    </Grid>
+                    <Grid Panel.ZIndex="999" x:Name="PlaylistHeader" Height="56" Background="{DynamicResource PrymaryHeaderColor}" VerticalAlignment="Top"  materialDesign:ShadowAssist.ShadowDepth="Depth1" materialDesign:ShadowAssist.Darken="True"  materialDesign:ShadowAssist.ShadowEdges="Top,Bottom">
+                        <DockPanel>
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin=" 20 4 16 4" Text="Playlist" FontWeight="DemiBold" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+
+                            <Button Height="40" Click="Button_Click_1"  Margin="8" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right">
+                                <StackPanel Margin="-8 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Queue" Width="24" Height="24"/>
+                                    <TextBlock Visibility="Collapsed" Margin="8 0" Text="ADD ITEM" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                        </DockPanel>
+
+                    </Grid>
+                    <Grid x:Name="DialogPanel">
+                        
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" Height="56" VerticalAlignment="Bottom" Background="{DynamicResource PrymaryFooterColor}">
+                    <StackPanel Visibility="Collapsed"  VerticalAlignment="Center" HorizontalAlignment="Right" >
+                        <Button x:Name="SettingsBtn" Style="{DynamicResource MaterialDesignIconButton}" Click="Button_Click" Cursor="Hand">
+                            <materialDesign:PackIcon  Margin="8" Kind="Settings" Height="24" Width="32" />
+                        </Button>
+
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" x:Name="NewItemGrid" Visibility="Visible" Margin="8 0">
+
+                        <Button Height="36" Click="Background_Click"  Margin="8" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right">
+                            <StackPanel Margin="-8 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <materialDesign:PackIcon Name="BackgroundIcon" Kind="Card" Width="36" Height="32" Margin=" 0 -2 0 0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Height="36" Click="Topmost_Click"  Margin="8" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right">
+                            <StackPanel Margin="-8 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <materialDesign:PackIcon Name="TopMostIcon" Kind="Pin" Width="36" Height="32" Margin=" 0 -2 0 0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Height="36" Click="Demotivator_Click" Margin="8" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right" Cursor="Hand">
+                            <StackPanel Margin="-8 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="QuestionMark" Width="36" Height="32" Margin=" 0 -2 0 0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Height="36" Click="LogoutBtn_Click"  Margin="8" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right" Cursor="Hand">
+                            <StackPanel Margin="-8 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <materialDesign:PackIcon Foreground="PaleVioletRed" Kind="Logout" Width="36" Height="32" Margin=" 0 -2 0 0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Height="36" Click="SettingsBtn_Click" Visibility="Collapsed" Margin="8" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right">
+                            <StackPanel Margin="-8 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Cog" Width="36" Height="32" Margin=" 0 -2 0 0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

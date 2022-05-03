@@ -1,0 +1,2074 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>True</UseWPF>
+    <Nullable>disable</Nullable>
+    <StartupObject>DudesPlayer.App</StartupObject>
+    <PlatformTarget>x64</PlatformTarget>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <TargetFrameworks></TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <Optimize>True</Optimize>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="libvlc\**" />
+    <EmbeddedResource Remove="libvlc\**" />
+    <None Remove="libvlc\**" />
+    <Page Remove="libvlc\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="3.png" />
+    <None Remove="Avatars\1.png" />
+    <None Remove="Avatars\10.jpg" />
+    <None Remove="Avatars\100.jpg" />
+    <None Remove="Avatars\101.jpg" />
+    <None Remove="Avatars\102.jpg" />
+    <None Remove="Avatars\103.jpg" />
+    <None Remove="Avatars\104.jpg" />
+    <None Remove="Avatars\105.jpg" />
+    <None Remove="Avatars\106.jpg" />
+    <None Remove="Avatars\107.jpg" />
+    <None Remove="Avatars\108.jpg" />
+    <None Remove="Avatars\109.jpg" />
+    <None Remove="Avatars\11.jpg" />
+    <None Remove="Avatars\110.jpg" />
+    <None Remove="Avatars\111.jpg" />
+    <None Remove="Avatars\112.jpg" />
+    <None Remove="Avatars\113.jpg" />
+    <None Remove="Avatars\114.jpg" />
+    <None Remove="Avatars\115.jpg" />
+    <None Remove="Avatars\116.jpg" />
+    <None Remove="Avatars\117.jpg" />
+    <None Remove="Avatars\118.jpg" />
+    <None Remove="Avatars\119.jpg" />
+    <None Remove="Avatars\12.jpg" />
+    <None Remove="Avatars\12.png" />
+    <None Remove="Avatars\120.jpg" />
+    <None Remove="Avatars\13.jpg" />
+    <None Remove="Avatars\14.jpg" />
+    <None Remove="Avatars\15.jpg" />
+    <None Remove="Avatars\16.jpg" />
+    <None Remove="Avatars\17.jpg" />
+    <None Remove="Avatars\18.jpg" />
+    <None Remove="Avatars\19.jpg" />
+    <None Remove="Avatars\2.jpg" />
+    <None Remove="Avatars\20.jpg" />
+    <None Remove="Avatars\21.jpg" />
+    <None Remove="Avatars\22.jpg" />
+    <None Remove="Avatars\23.jpg" />
+    <None Remove="Avatars\24.jpg" />
+    <None Remove="Avatars\25.jpg" />
+    <None Remove="Avatars\26.jpg" />
+    <None Remove="Avatars\27.jpg" />
+    <None Remove="Avatars\28.jpg" />
+    <None Remove="Avatars\29.jpg" />
+    <None Remove="Avatars\3.jpg" />
+    <None Remove="Avatars\30.jpg" />
+    <None Remove="Avatars\31.jpg" />
+    <None Remove="Avatars\32.jpg" />
+    <None Remove="Avatars\33.jpg" />
+    <None Remove="Avatars\34.jpg" />
+    <None Remove="Avatars\35.jpg" />
+    <None Remove="Avatars\36.jpg" />
+    <None Remove="Avatars\37.jpg" />
+    <None Remove="Avatars\38.jpg" />
+    <None Remove="Avatars\39.jpg" />
+    <None Remove="Avatars\4.jpg" />
+    <None Remove="Avatars\40.jpg" />
+    <None Remove="Avatars\41.jpg" />
+    <None Remove="Avatars\42.jpg" />
+    <None Remove="Avatars\43.jpg" />
+    <None Remove="Avatars\44.jpg" />
+    <None Remove="Avatars\45.jpg" />
+    <None Remove="Avatars\46.jpg" />
+    <None Remove="Avatars\47.jpg" />
+    <None Remove="Avatars\48.jpg" />
+    <None Remove="Avatars\49.jpg" />
+    <None Remove="Avatars\5.jpg" />
+    <None Remove="Avatars\50.jpg" />
+    <None Remove="Avatars\51.jpg" />
+    <None Remove="Avatars\52.jpg" />
+    <None Remove="Avatars\53.jpg" />
+    <None Remove="Avatars\54.jpg" />
+    <None Remove="Avatars\55.jpg" />
+    <None Remove="Avatars\56.jpg" />
+    <None Remove="Avatars\57.jpg" />
+    <None Remove="Avatars\58.jpg" />
+    <None Remove="Avatars\59.jpg" />
+    <None Remove="Avatars\6.jpg" />
+    <None Remove="Avatars\60.jpg" />
+    <None Remove="Avatars\61.jpg" />
+    <None Remove="Avatars\62.jpg" />
+    <None Remove="Avatars\63.jpg" />
+    <None Remove="Avatars\64.jpg" />
+    <None Remove="Avatars\65.jpg" />
+    <None Remove="Avatars\66.jpg" />
+    <None Remove="Avatars\67.jpg" />
+    <None Remove="Avatars\68.jpg" />
+    <None Remove="Avatars\69.jpg" />
+    <None Remove="Avatars\7.jpg" />
+    <None Remove="Avatars\70.jpg" />
+    <None Remove="Avatars\71.jpg" />
+    <None Remove="Avatars\72.jpg" />
+    <None Remove="Avatars\73.jpg" />
+    <None Remove="Avatars\74.jpg" />
+    <None Remove="Avatars\75.jpg" />
+    <None Remove="Avatars\76.jpg" />
+    <None Remove="Avatars\77.jpg" />
+    <None Remove="Avatars\78.jpg" />
+    <None Remove="Avatars\79.jpg" />
+    <None Remove="Avatars\8.jpg" />
+    <None Remove="Avatars\80.jpg" />
+    <None Remove="Avatars\81.jpg" />
+    <None Remove="Avatars\82.jpg" />
+    <None Remove="Avatars\83.jpg" />
+    <None Remove="Avatars\84.jpg" />
+    <None Remove="Avatars\85.jpg" />
+    <None Remove="Avatars\86.jpg" />
+    <None Remove="Avatars\87.jpg" />
+    <None Remove="Avatars\88.jpg" />
+    <None Remove="Avatars\89.jpg" />
+    <None Remove="Avatars\9.jpg" />
+    <None Remove="Avatars\90.jpg" />
+    <None Remove="Avatars\91.jpg" />
+    <None Remove="Avatars\92.jpg" />
+    <None Remove="Avatars\93.jpg" />
+    <None Remove="Avatars\94.jpg" />
+    <None Remove="Avatars\95.jpg" />
+    <None Remove="Avatars\96.jpg" />
+    <None Remove="Avatars\97.jpg" />
+    <None Remove="Avatars\98.jpg" />
+    <None Remove="Avatars\99.jpg" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\AddressInfo.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\Constants.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\Event.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\example.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\MulticastInfo.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\NetworkInfo.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\NetworkStream.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\Node.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\NodeInfo.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\PeerInfo.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\RouteInfo.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\Socket.cs" />
+    <None Remove="C:\Users\adrew\.nuget\packages\zerotier.sockets\1.4.3\contentFiles\cs\any\ZeroTier.Source.ReadOnly\SocketException.cs" />
+    <None Remove="jokes.json" />
+    <None Remove="Sounds\ChatAlert.wav" />
+    <None Remove="Sounds\LoginAlert.wav" />
+    <None Remove="Sounds\LogoutAlert.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CrashReporter.NET.Official" Version="1.6.0" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.2.2" />
+    <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
+    <PackageReference Include="NetCoreServer" Version="6.1.0" />
+    <PackageReference Include="RandomFriendlyNameGenerator" Version="1.0.7" />
+    <PackageReference Include="RestSharp" Version="106.15.0" />
+    <PackageReference Include="SharpGrabber" Version="2.1.0" />
+    <PackageReference Include="SharpGrabber.BlackWidow" Version="1.1.0" />
+    <PackageReference Include="SharpGrabber.Hls" Version="1.3.0" />
+    <PackageReference Include="SharpGrabber.Vimeo" Version="1.0.0" />
+    <PackageReference Include="SharpGrabber.YouTube" Version="1.3.0" />
+    <PackageReference Include="Vlc.DotNet.Forms" Version="3.1.0" />
+    <PackageReference Include="Vlc.DotNet.Wpf" Version="3.1.0" />
+    <PackageReference Include="Websocket.Client" Version="4.4.43" />
+    <PackageReference Include="WPF-UI" Version="1.2.4" />
+    <PackageReference Include="YoutubeExplode" Version="6.1.2" />
+    <PackageReference Include="YoutubeSearchApi.Net" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Avatars\10.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\100.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\101.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\102.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\103.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\104.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\105.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\106.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\107.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\108.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\109.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\11.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\110.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\111.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\112.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\113.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\114.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\115.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\116.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\117.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\118.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\119.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\12.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\120.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\13.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\14.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\15.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\16.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\17.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\18.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\19.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\20.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\21.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\22.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\23.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\24.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\25.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\26.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\27.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\28.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\30.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\31.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\32.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\33.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\34.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\35.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\36.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\37.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\38.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\39.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\40.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\41.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\42.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\43.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\44.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\45.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\46.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\47.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\48.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\49.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\50.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\51.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\52.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\53.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\54.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\55.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\56.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\57.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\58.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\59.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\60.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\61.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\62.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\63.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\64.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\65.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\66.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\67.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\68.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\69.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\7.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\70.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\71.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\72.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\73.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\74.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\75.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\76.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\77.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\78.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\79.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\8.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\80.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\81.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\82.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\83.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\84.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\85.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\86.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\87.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\88.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\89.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\9.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\90.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\91.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\92.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\93.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\94.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\95.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\96.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\97.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\98.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Avatars\99.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\ChatAlert.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\LoginAlert.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\LogoutAlert.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\14.4.16\build\x64\libvlc.dll" />
+    <Resource Include="jokes.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="HostLink.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\14.4.16\build\x64\libvlc.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Halpers\" />
+    <Folder Include="Views\Fun\Demotivator\" />
+    <Folder Include="Views\Fun\Новая папка\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\libvlc.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\libvlccore.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libaccess_concat_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libaccess_imem_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libaccess_mms_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libaccess_realrtsp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libaccess_srt_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libaccess_wasapi_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libattachment_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libcdda_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libdcp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libdshow_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libdtv_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libdvdnav_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libdvdread_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libfilesystem_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libftp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libhttps_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libhttp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libidummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libimem_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\liblibbluray_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\liblive555_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libnfs_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\librtp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libsatip_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libscreen_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libsdp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libsftp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libshm_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libsmb_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libtcp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libtimecode_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libudp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libvcd_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libvdr_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access\libvnc_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access_output\libaccess_output_dummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access_output\libaccess_output_file_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access_output\libaccess_output_http_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access_output\libaccess_output_livehttp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access_output\libaccess_output_shout_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access_output\libaccess_output_srt_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\access_output\libaccess_output_udp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libaudiobargraph_a_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libaudio_format_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libchorus_flanger_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libcompressor_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libdolby_surround_decoder_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libequalizer_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libgain_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libheadphone_channel_mixer_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libkaraoke_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libmad_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libmono_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libnormvol_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libparam_eq_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libremap_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libsamplerate_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libscaletempo_pitch_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libscaletempo_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libsimple_channel_mixer_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libspatialaudio_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libspatializer_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libspeex_resampler_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libstereo_widen_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libtospdif_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libtrivial_channel_mixer_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_filter\libugly_resampler_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_mixer\libfloat_mixer_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_mixer\libinteger_mixer_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_output\libadummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_output\libafile_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_output\libamem_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_output\libdirectsound_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_output\libmmdevice_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_output\libwasapi_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\audio_output\libwaveout_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\liba52_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libadpcm_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libaes3_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libaom_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libaraw_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libaribsub_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libavcodec_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libcc_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libcdg_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libcrystalhd_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libcvdsub_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libd3d11va_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libdav1d_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libdca_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libddummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libdmo_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libdvbsub_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libdxva2_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libedummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libfaad_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libflac_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libfluidsynth_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libg711_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libjpeg_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libkate_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\liblibass_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\liblibmpeg2_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\liblpcm_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libmft_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libmpg123_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\liboggspots_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libopus_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libpng_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libqsv_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\librawvideo_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\librtpvideo_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libschroedinger_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libscte18_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libscte27_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libsdl_image_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libspdif_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libspeex_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libspudec_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libstl_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libsubsdec_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libsubstx3g_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libsubsusf_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libsvcdsub_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libt140_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libtextst_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libtheora_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libttml_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libtwolame_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libuleaddvaudio_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libvorbis_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libvpx_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libwebvtt_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libx26410b_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libx264_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libx265_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\codec\libzvbi_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\control\libdummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\control\libgestures_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\control\libhotkeys_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\control\libnetsync_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\control\libntservice_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\control\liboldrc_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\control\libwin_hotkeys_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\control\libwin_msg_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\d3d11\libdirect3d11_filters_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\d3d9\libdirect3d9_filters_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libadaptive_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libaiff_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libasf_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libau_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libavi_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libcaf_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libdemuxdump_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libdemux_cdg_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libdemux_chromecast_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libdemux_stl_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libdiracsys_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libdirectory_demux_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libes_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libflacsys_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libgme_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libh26x_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libimage_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libmjpeg_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libmkv_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libmod_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libmp4_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libmpc_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libmpgv_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libnoseek_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libnsc_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libnsv_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libnuv_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libogg_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libplaylist_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libps_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libpva_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\librawaud_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\librawdv_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\librawvid_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libreal_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libsid_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libsmf_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libsubtitle_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libts_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libtta_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libty_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libvc1_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libvobsub_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libvoc_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libwav_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\demux\libxa_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\gui\libqt_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\gui\libskins2_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\keystore\libfile_keystore_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\keystore\libmemory_keystore_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\logger\libconsole_logger_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\logger\libfile_logger_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\lua\liblua_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\meta_engine\libfolder_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\meta_engine\libtaglib_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\libaddonsfsstorage_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\libaddonsvorepository_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\libaudioscrobbler_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\libexport_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\libfingerprinter_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\libgnutls_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\liblogger_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\libstats_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\libvod_rtsp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\misc\libxml_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\mux\libmux_asf_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\mux\libmux_avi_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\mux\libmux_dummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\mux\libmux_mp4_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\mux\libmux_mpjpeg_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\mux\libmux_ogg_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\mux\libmux_ps_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\mux\libmux_ts_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\mux\libmux_wav_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_a52_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_av1_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_copy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_dirac_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_dts_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_flac_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_h264_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_hevc_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_mlp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_mpeg4audio_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_mpeg4video_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_mpegaudio_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_mpegvideo_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\packetizer\libpacketizer_vc1_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\services_discovery\libmediadirs_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\services_discovery\libmicrodns_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\services_discovery\libpodcast_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\services_discovery\libsap_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\services_discovery\libupnp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\services_discovery\libwindrive_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\spu\libaudiobargraph_v_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\spu\liblogo_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\spu\libmarq_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\spu\libmosaic_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\spu\libremoteosd_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\spu\librss_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\spu\libsubsdelay_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_extractor\libarchive_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_filter\libadf_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_filter\libaribcam_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_filter\libcache_block_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_filter\libcache_read_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_filter\libhds_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_filter\libinflate_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_filter\libprefetch_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_filter\librecord_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_filter\libskiptags_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_autodel_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_bridge_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_chromaprint_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_chromecast_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_cycle_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_delay_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_description_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_display_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_dummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_duplicate_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_es_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_gather_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_mosaic_bridge_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_record_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_rtp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_setid_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_smem_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_standard_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_stats_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\stream_out\libstream_out_transcode_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\text_renderer\libfreetype_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\text_renderer\libsapi_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\text_renderer\libtdummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libchain_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libgrey_yuv_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi420_10_p010_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi420_nv12_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi420_rgb_mmx_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi420_rgb_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi420_rgb_sse2_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi420_yuy2_mmx_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi420_yuy2_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi420_yuy2_sse2_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi422_i420_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi422_yuy2_mmx_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi422_yuy2_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libi422_yuy2_sse2_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\librv32_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libswscale_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libyuvp_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libyuy2_i420_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_chroma\libyuy2_i422_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libadjust_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libalphamask_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libanaglyph_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libantiflicker_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libball_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libblendbench_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libblend_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libbluescreen_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libcanvas_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libcolorthres_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libcroppadd_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libdeinterlace_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libedgedetection_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\liberase_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libextract_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libfps_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libfreeze_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libgaussianblur_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libgradfun_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libgradient_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libgrain_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libhqdn3d_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libinvert_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libmagnify_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libmirror_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libmotionblur_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libmotiondetect_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\liboldmovie_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libposterize_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libpostproc_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libpsychedelic_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libpuzzle_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libripple_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\librotate_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libscale_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libscene_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libsepia_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libsharpen_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libtransform_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libvhs_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_filter\libwave_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libcaca_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libdirect3d11_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libdirect3d9_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libdirectdraw_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libdrawable_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libflaschen_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libglwin32_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libgl_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libvdummy_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libvmem_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libwgl_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libwingdi_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libwinhibit_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_output\libyuv_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_splitter\libclone_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_splitter\libpanoramix_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\video_splitter\libwall_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\visualization\libglspectrum_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\visualization\libgoom_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\visualization\libprojectm_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\plugins\visualization\libvisual_plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\adrew\.nuget\packages\visioforge.dotnet.core.redist.vlc.x64\15.1.18\build\x64\VisioForge_VLC_Source_x64.ax" />
+  </ItemGroup>
+
+</Project>

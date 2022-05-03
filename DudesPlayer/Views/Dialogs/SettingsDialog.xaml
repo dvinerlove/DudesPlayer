@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="DudesPlayer.Views.SideBar.Dialogs.SettingsDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DudesPlayer.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+              Width="500"   >
+    <wpfui:Card Padding="0  ">
+        <Grid  >
+            <wpfui:Card Height="64"  VerticalAlignment="Top" Padding="24 0">
+                <TextBlock Text="Choose Vlc Directory" Margin="24 16" FontWeight="DemiBold" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+            </wpfui:Card>
+            <Grid VerticalAlignment="Top" Margin=" 0 72">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom"  Grid.Row="0" Text="Choose Vlc Directory" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+
+                <StackPanel HorizontalAlignment="Center" Grid.Row="1">
+                    <wpfui:Button Height="36"  Margin="8"  Background="{DynamicResource SecondaryBackgroundColor}"  Width="auto" VerticalAlignment="Bottom"   Click="Button_Click">
+                        <TextBlock x:Name="PathField" HorizontalAlignment="Left" Margin="24 0 " TextTrimming="CharacterEllipsis" Text="E:\PROJECTS\Projects VS\DudesPlayerFolder\DudesPlayer\Installer\x64.zip"/>
+                    </wpfui:Button>
+                    <wpfui:Button Appearance="Primary"  Height="36" 
+                      Margin="0 8 8 8" HorizontalAlignment="Center"  Cursor="Hand" Click="Button_Click_1">
+                        <materialDesign:PackIcon FontSize="24" Kind="Download"/>
+                    </wpfui:Button>
+                </StackPanel>
+
+
+            </Grid>
+            <wpfui:Card  VerticalAlignment="Bottom" Padding="4    ">
+                <Grid>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <wpfui:Button Appearance="Secondary" Height="36" HorizontalAlignment="Left" Content="CLOSE" Margin="8" Cursor="Hand" Click="Button_Click_2" />
+                        <wpfui:Button Appearance="Secondary" Background="{DynamicResource MyAccentColor}"  Height="36" 
+                     Content="SAVE" Margin="0 8 8 8"  Cursor="Hand" Click="Button_Click_3"/>
+                    </StackPanel>
+                </Grid>
+
+            </wpfui:Card>
+        </Grid>
+
+    </wpfui:Card>
+
+</UserControl>

@@ -1,0 +1,6 @@
+﻿namespace AspWebServer.wwwroot.public
+{
+    public class test
+    {
+    }
+}

@@ -1,0 +1,21 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/DudesPlayer
+/DudesPlayer/obj
+/DudesPlayer/bin
+/.vs
+/obj
+/bin
+/obj/Debug/net6.0-windows
+/AspWebServer/bin
+/AspWebServer/obj
+/ClassLibrary/bin
+/ClassLibrary/obj
+/DatabaseCleaner/bin
+/DatabaseCleaner/obj
+/Installer/bin/Release
+/Installer/obj/Release/net6.0-windows
+/Installer/obj/Debug/net6.0-windows
+/ClassLibrary/Models/Database/ConnectionDB.cs

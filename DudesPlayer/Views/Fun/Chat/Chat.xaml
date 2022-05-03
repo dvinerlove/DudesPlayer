@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="DudesPlayer.Views.Fun.Chat.Chat"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DudesPlayer.Views.Fun.Chat"
+             mc:Ignorable="d" HorizontalAlignment="Left"
+             xmlns:md="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI" xmlns:sidebar="clr-namespace:DudesPlayer.Views.SideBar"
+           MinWidth="300" Visibility="Collapsed"
+             MaxWidth="500">
+    <wpfui:Card>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <wpfui:Card Margin="0 0 0 12">
+                <wpfui:DynamicScrollViewer Name="Scroll">
+                    <VirtualizingStackPanel Name="ChatStack">
+                    </VirtualizingStackPanel>
+                </wpfui:DynamicScrollViewer>
+            </wpfui:Card>
+            <wpfui:TextBox AcceptsReturn="False" Placeholder="Type to chat"  Name="MessageText" Grid.Row="1" TextChanged="TextBox_TextChanged" KeyDown="TextBox_KeyDown" KeyUp="TextBox_KeyUp"/>
+        </Grid>
+    </wpfui:Card>
+</UserControl>
