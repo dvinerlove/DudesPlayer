@@ -15,7 +15,12 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <Button Margin="8" Content="Refresh" HorizontalAlignment="Left" Click="Button_Click"/>
+                <wpfui:Button Appearance="Secondary" Margin="0 8 8 8"  HorizontalAlignment="Left" Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <md:PackIcon Kind="Refresh" VerticalAlignment="Center" Width="22" Height="22"/>
+                        <Label Content="Refresh" VerticalAlignment="Center" Margin="8 4 4 0" />
+                    </StackPanel>
+                </wpfui:Button>
                 <wpfui:Card  Margin="0 0 0 8">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Width="100" Text="Room Name" Margin="8 0 0 0" Foreground="White"/>

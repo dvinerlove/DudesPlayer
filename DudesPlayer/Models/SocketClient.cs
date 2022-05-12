@@ -1,8 +1,6 @@
 ﻿using ClassLibrary;
 using ClassLibrary.Models;
 using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
-using DudesPlayer.Models.Client;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
@@ -61,7 +59,10 @@ namespace DudesPlayer.Models
 
             hubConnection.On<string, string>("Receive", (user, message) =>
             {
-                MessageReceived(user, message);
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageReceived(user, message);
+                });
             });
 
         }
@@ -79,6 +80,7 @@ namespace DudesPlayer.Models
         {
             if (IsConnected)
                 return;
+
             try
             {
                 await hubConnection.StartAsync();
@@ -122,7 +124,7 @@ namespace DudesPlayer.Models
 
             if (newsse == null)
             {
-                Models.Client.VDebug.WriteLine("!!!!!!! UNKNOWN SSE EROR !!!!!!!");
+                VDebug.WriteLine("!!!!!!! UNKNOWN SSE EROR !!!!!!!");
                 return;
             }
             else
@@ -136,26 +138,19 @@ namespace DudesPlayer.Models
                 }
             }
 
-            Models.Client.VDebug.WriteLine("SSE EVENT CODE:\n" + ":" + newsse.Event.ToString() + ":");
+            VDebug.WriteLine("SSE EVENT CODE:\n" + ":" + newsse.Event.ToString() + ":");
 
             switch (newsse.Event)
             {
                 case PacketType.Ping:
-                    Models.Client.VDebug.WriteLine("ping)");
+                    VDebug.WriteLine("ping)");
                     break;
                 case PacketType.UpdateAll:
                     var obj = newsse.Data.ToString().ToObject(typeof(RoomInfo));
                     if (obj != null)
                     {
-
                         var newRoom = (RoomInfo)obj;
-
-                        if (newRoom.UsersCount() < ClientData.Room.UsersCount())
-                        {
-                            SoundHandler.Play(SoundType.logout);
-                        }
-
-                        ClientData.Room = newRoom;
+                        ClientData.Client.SetRoom(newRoom);
                         ClientCommandHandler.UpdateInvoke();
                     }
                     break;
@@ -184,9 +179,10 @@ namespace DudesPlayer.Models
                     SoundHandler.Play(SoundType.login);
                     break;
                 case PacketType.Logout:
+                    SoundHandler.Play(SoundType.logout);
                     break;
             }
-            Models.Client.VDebug.WriteLine("SSE End...");
+            VDebug.WriteLine("SSE End...");
 
         }
     }

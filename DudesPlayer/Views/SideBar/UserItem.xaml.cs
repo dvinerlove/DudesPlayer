@@ -1,4 +1,5 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary;
+using ClassLibrary.Models;
 using System;
 using System.Diagnostics;
 using System.Windows.Controls;
@@ -18,7 +19,7 @@ namespace DudesPlayer.Views.SideBar
             User = user;
             UserNameTB.Text = user.Username;
             Uri uri = new Uri("pack://application:,,,/Avatars/" + user.AvatarId + ".jpg");
-            Models.Client.VDebug.WriteLine(uri.ToString());
+            VDebug.WriteLine(uri.ToString());
             BitmapImage bi = null;
             try
             {
@@ -27,7 +28,7 @@ namespace DudesPlayer.Views.SideBar
             }
             catch (Exception ex)
             {
-                Models.Client.VDebug.WriteLine(ex.ToMessageString());
+                VDebug.WriteLine(ex.ToMessageString());
             }
             if (bi != null)
             {
@@ -41,7 +42,7 @@ namespace DudesPlayer.Views.SideBar
             InitializeComponent();
             UserNameTB.Text = "test";
             Uri uri = new Uri("pack://application:,,,/Avatars/5.jpg");
-            Models.Client.VDebug.WriteLine(uri.ToString());
+            VDebug.WriteLine(uri.ToString());
             BitmapImage bi = null;
             try
             {
@@ -50,7 +51,7 @@ namespace DudesPlayer.Views.SideBar
             }
             catch (Exception ex)
             {
-                Models.Client.VDebug.WriteLine(ex.ToMessageString());
+                VDebug.WriteLine(ex.ToMessageString());
             }
             if (bi != null)
             {

@@ -20,10 +20,18 @@ namespace ClassLibrary.Models
 
         public bool IsEqual(RoomSettings settings)
         {
-            return settings.CurrentURL == CurrentURL &&
-                settings.Speed == Speed &&
-                settings.State == State &&
-                settings.CurrentTime == CurrentTime;
+            if (settings == null) return true;
+            try
+            {
+                return settings.CurrentURL == CurrentURL &&
+               settings.Speed == Speed &&
+               settings.State == State &&
+               settings.CurrentTime == CurrentTime;
+            }
+            catch
+            {
+                return true;
+            }
         }
     }
 

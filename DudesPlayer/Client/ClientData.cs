@@ -10,9 +10,8 @@ namespace DudesPlayer.Classes
 {
     internal static class ClientData
     {
-        public static DudesPlayer.Client.Client Client { get; } = new DudesPlayer.Client.Client();
+        public static ClassLibrary.Client.Client Client { get; set; }
         public static UserModel CurrentUser { get; set; }
-        public static RoomInfo Room { get; set; }
         public static SseController SseController { get; set; }
         public static SocketClient SocketClient { get; set; }
         public static string BaseUrl { get; set; } = "http://192.168.196.110:43489";

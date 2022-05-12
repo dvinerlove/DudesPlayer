@@ -4,125 +4,145 @@ using System.Windows;
 using ClassLibrary;
 using ClassLibrary.Models;
 using RestSharp;
-using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
-using DudesPlayer.Models;
 using Newtonsoft.Json;
 using System.IO;
-using DudesPlayer.Models.Client;
 using System.Collections.Generic;
 
-namespace DudesPlayer.Client
+namespace ClassLibrary.Client
 {
-
     public enum ApiType
     {
         rooms,
         users,
         urls,
         commands
-
     }
 
     public class Client
     {
-        public event EventHandler ErrorEvent;
+        private static UserModel currentUser = new UserModel();
+        private string baseUrl;
+        private RoomInfo? roomInfo;
 
+        public Client()
+        {
+
+        }
+        public event EventHandler ErrorEvent;
+        public RoomInfo GetRoom()
+        {
+            return roomInfo ?? new RoomInfo();
+        }
+        public void SetRoom(RoomInfo room)
+        {
+            roomInfo = room;
+        }
         public bool CreateRoom()
         {
             var result = Post(ApiType.rooms, "", "", Method.POST);
-            if (ClientData.Room != null && result)
-            {
-                ClientData.CurrentUser.RoomName = ClientData.Room.Name;
-            }
+            //if (ClientData.Room != null && result)
+            //{
+            //    ClientData.CurrentUser.RoomName = ClientData.Room.Name;
+            //}
             return result;
         }
+        public void SetUri(string baseUrl)
+        {
+            this.baseUrl = baseUrl;
+        }
+        public void SetUser(UserModel user)
+        {
+            currentUser = user ?? new UserModel();
+        }
+
 
         public bool Login()
         {
-            var result = Post(ApiType.users, "", ClientData.CurrentUser.ToString(), Method.POST);
-            if (result)
-            {
-                ClientData.SseController = new Models.SseController();
-                ClientData.SseController.Run();
-                if (ClientData.SocketClient==null)
-                {
-                    ClientData.SocketClient = new SocketClient();
-                }
-                else
-                {
-                    ClientData.SocketClient.Stop();
-                    ClientData.SocketClient = new SocketClient();
-                }
-                ClientData.SocketClient.Start();
-            }
+
+
+            var result = Post(ApiType.users, "", /*ClientData.CurrentUser.ToString()*/currentUser.ToString(), Method.POST);
+            //if (result)
+            //{
+            //    ClientData.SseController = new SseController();
+            //    ClientData.SseController.Run();
+            //    if (ClientData.SocketClient == null)
+            //    {
+            //        ClientData.SocketClient = new SocketClient();
+            //    }
+            //    else
+            //    {
+            //        ClientData.SocketClient.Stop();
+            //        ClientData.SocketClient = new SocketClient();
+            //    }
+            //    ClientData.SocketClient.Start();
+            //}
             return result;
         }
 
-        internal void SendChatMessage(string messageText)
+        //public void SendChatMessage(string messageText)
+        //{
+        //    if (ClientData.SocketClient != null)
+        //    {
+        //        SSEEvent sse = new SSEEvent() { Event = PacketType.Chat, Data = messageText };
+        //        ClientData.SocketClient.Send(sse.ToJson());
+        //    }
+        //}
+
+        public bool AddUrl(URLModel link)
         {
-            if (ClientData.SocketClient != null)
-            {
-                SSEEvent sse = new SSEEvent() { Event = PacketType.Chat, Data = messageText };
-                ClientData.SocketClient.Send(sse.ToJson());
-            }
+            return Post(ApiType.urls, $"{currentUser.RoomName}", link.ToJson(), Method.POST);
         }
 
-        internal bool AddUrl(URLModel link)
-        {
-            return Post(ApiType.urls, $"{ClientData.CurrentUser.RoomName}", link.ToJson(), Method.POST);
-        }
 
-
-        internal bool Disconnect()
+        public bool Disconnect()
         {
-            if (ClientData.CurrentUser != null)
+            if (currentUser != null)
             {
-                return Post(ApiType.users, null, $"{ClientData.CurrentUser}", Method.DELETE);
+                return Post(ApiType.users, null, $"{currentUser}", Method.DELETE);
             }
             else
             {
                 return true;
             }
         }
-        internal bool DeleteUrl(URLModel link)
+        public bool DeleteUrl(URLModel link)
         {
-            return Post(ApiType.urls, $"{ClientData.CurrentUser.RoomName}", link.ToJson(), Method.DELETE);
+            return Post(ApiType.urls, $"{currentUser.RoomName}", link.ToJson(), Method.DELETE);
         }
 
-        internal void ShakeScreen()
+        public void ShakeScreen()
         {
-            Post(ApiType.commands, $"{ClientData.CurrentUser}/shake", "", Method.POST);
+            Post(ApiType.commands, $"{currentUser}/shake", "", Method.POST);
         }
 
-        internal bool SetCurrentVideo(URLModel link)
+        public bool SetCurrentVideo(URLModel link)
         {
-            return Post(ApiType.commands, $"{ClientData.CurrentUser}/set", link.ToJson(), Method.POST);
+            return Post(ApiType.commands, $"{currentUser}/set", link.ToJson(), Method.POST);
         }
-        internal bool CreateJoke(Joke joke)
+        public bool CreateJoke(Joke joke)
         {
             var json = joke.setup + "?.?123**" + joke.punchline;
-            return Post(ApiType.commands, $"{ClientData.CurrentUser}/joke", json, Method.POST);
+            return Post(ApiType.commands, $"{currentUser}/joke", json, Method.POST);
         }
-        internal bool Play()
+        public bool Play()
         {
-            return Post(ApiType.commands, $"{ClientData.CurrentUser}/play", null, Method.POST);
+            return Post(ApiType.commands, $"{currentUser}/play", null, Method.POST);
         }
-        internal bool Pause()
+        public bool Pause()
         {
-            return Post(ApiType.commands, $"{ClientData.CurrentUser}/pause", null, Method.POST);
+            return Post(ApiType.commands, $"{currentUser}/pause", null, Method.POST);
         }
-        internal bool SetTime(long value)
+        public bool SetTime(long value)
         {
-            return Post(ApiType.commands, $"{ClientData.CurrentUser}/time", value.ToString(), Method.POST);
+            return Post(ApiType.commands, $"{currentUser}/time", value.ToString(), Method.POST);
 
         }
         private bool Post(ApiType apiType, string path, string body, Method method)
         {
             try
             {
-                var client = new RestClient($"{ClientData.BaseUrl}/api/{apiType}/{path}");
-                VDebug.WriteLine($"{ClientData.BaseUrl}/api/{apiType}/{path}");
+                var client = new RestClient($"{baseUrl}/api/{apiType}/{path}");
+                VDebug.WriteLine($"{baseUrl}/api/{apiType}/{path}");
                 var request1 = new RestRequest(method);
                 if (string.IsNullOrEmpty(body) == false)
                 {
@@ -149,16 +169,18 @@ namespace DudesPlayer.Client
                             if (responce.State != ResponceStateCode.Success)
                                 ClientCommandHandler.ServerErrorInvoke(responce.State + " " + responce.Reason);
                         }
-                        var jsonRoom = responce.Reason;
-                        RoomInfo roomInfo = jsonRoom.ToObject<RoomInfo>();
+
+                        var jsonRoom = responce.Reason ?? "";
+
+                        roomInfo = jsonRoom!.ToObject<RoomInfo>();
+
                         if (roomInfo != null)
                         {
-                            ClientData.Room = roomInfo;
+                            currentUser.RoomName = roomInfo.Name ?? "";
                             return true;
                         }
                         else
                         {
-                            //ClientCommandHandler.ServerErrorInvoke($"{apiType} \n{method} \n{path} \n{body} \nroom is null".Trim());
                             return false;
                         }
                     }
@@ -183,36 +205,35 @@ namespace DudesPlayer.Client
                     return false;
                 }
             }
-
             catch (Exception ex)
             {
                 VDebug.WriteLine(ex.ToMessageString());
-                MessageBox.Show(ex.Message);
                 ErrorEvent?.Invoke(null, EventArgs.Empty);
                 return false;
             }
         }
 
-        internal void TrySaveSubtitle(string fileName)
+        public async Task<string> TrySaveSubtitle(string fileName, string subtitlesDirectoryPath)
         {
-            var client = new RestClient($"{ClientData.BaseUrl}/subtitles/{fileName}txt");
+            var client = new RestClient($"{baseUrl}/subtitles/{fileName}txt");
             var request1 = new RestRequest(Method.GET);
 
-            var resp = client.Execute(request1);
-            if (Directory.Exists(Properties.Settings.Default.SubsDirectory) == false)
+            var resp = await client.ExecuteAsync(request1);
+            if (Directory.Exists(subtitlesDirectoryPath) == false)
             {
-                Directory.CreateDirectory(Properties.Settings.Default.SubsDirectory);
+                Directory.CreateDirectory(subtitlesDirectoryPath);
             }
             if (string.IsNullOrEmpty(resp.Content) == false)
             {
-                var file = File.CreateText(@$"{Properties.Settings.Default.SubsDirectory}\{fileName}srt");
-                file.Write(resp.Content);
-                file.Close();
+                File.Create(@$"{subtitlesDirectoryPath}\{fileName}srt").Close();
+                var file = File.WriteAllTextAsync(@$"{subtitlesDirectoryPath}\{fileName}srt", resp.Content);
+                
             }
+            return fileName;
         }
-        internal List<RoomInfo> GetRooms()
+        public List<RoomInfo> GetRooms()
         {
-            var client = new RestClient($"{ClientData.BaseUrl}/api/rooms");
+            var client = new RestClient($"{baseUrl}/api/rooms");
             var request1 = new RestRequest(Method.GET);
 
             var resp = client.Execute(request1);
@@ -225,9 +246,9 @@ namespace DudesPlayer.Client
                 return new List<RoomInfo>();
             }
         }
-        internal List<URLModel> GetFiles()
+        public List<URLModel> GetFiles()
         {
-            var client = new RestClient($"{ClientData.BaseUrl}/api/files");
+            var client = new RestClient($"{baseUrl}/api/files");
             var request1 = new RestRequest(Method.GET);
 
             var resp = client.Execute(request1);

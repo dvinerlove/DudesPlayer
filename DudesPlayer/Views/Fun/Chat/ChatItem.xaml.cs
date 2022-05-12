@@ -1,4 +1,5 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary;
+using ClassLibrary.Models;
 using DudesPlayer.Classes;
 using System;
 using System.Collections.Generic;
@@ -49,11 +50,11 @@ namespace DudesPlayer.Views.Fun.Chat
             Username.Text = username;
             Message.Text = message;
             Time.Text = DateTime.Now.ToShortTimeString();
-            var user = ClientData.Room.GetUser(username);
+            var user = ClientData.Client.GetRoom().GetUser(username);
             if (user != null)
             {
                 Uri uri = new Uri("pack://application:,,,/Avatars/" + user.AvatarId + ".jpg");
-                Models.Client.VDebug.WriteLine(uri.ToString());
+                VDebug.WriteLine(uri.ToString());
                 BitmapImage bi = null;
                 try
                 {
@@ -62,7 +63,7 @@ namespace DudesPlayer.Views.Fun.Chat
                 }
                 catch (Exception ex)
                 {
-                    Models.Client.VDebug.WriteLine(ex.ToMessageString());
+                    VDebug.WriteLine(ex.ToMessageString());
                 }
                 if (bi != null)
                 {

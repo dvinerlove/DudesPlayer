@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2lkV2uVY26R0flwLjS9y3yX2UG6lc8WEbrt5Kdt2ro/ePjxBWGYTir4tK4VaTkkp+wJ4y1MQPcUhv2UdoBm4Yg==",
+  "dgSpecHash": "nHo7JtbSv5YUv3GBEWwLSnKAnIi+UR3iHjklun2XUTBYZZTF0ETjQBrUpqUpOOXX0UGDRNR9Z6lu1Nvv5ETNVg==",
   "success": true,
   "projectFilePath": "E:\\PROJECTS\\Projects VS\\DudesPlayer\\Installer\\Installer.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Users\\adrew\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\adrew\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\adrew\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\adrew\\.nuget\\packages\\restsharp\\106.15.0\\restsharp.106.15.0.nupkg.sha512",
     "C:\\Users\\adrew\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
     "C:\\Users\\adrew\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
     "C:\\Users\\adrew\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.6\\sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",

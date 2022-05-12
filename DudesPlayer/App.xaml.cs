@@ -37,6 +37,9 @@ namespace DudesPlayer
                 ClientData.BaseUrl = File.ReadAllText("api.txt");
             }
             ClientData.EventsUrl = "ws://144.217.180.130:41235/";
+
+            ClientData.Client = new ClassLibrary.Client.Client();
+            ClientData.Client.SetUri(ClientData.BaseUrl);
             DudesPlayer.Properties.Settings.Default.Upgrade();
         }
 
@@ -83,14 +86,12 @@ namespace DudesPlayer
         public static void SendReport(Exception exception, string developerMessage = "")
         {
             _reportCrash.Silent = false;
-            MessageBox.Show($"Exception!!!\n\n{exception.Message}\n\n\n{exception.ToMessageString}\n\n\n{exception.StackTrace}");
-            //_reportCrash.Send(exception);
+            MessageBox.Show($"{exception.Message}\n\n\n{exception.ToMessageString}\n\n\n{exception.StackTrace}", "Exception!!!");
         }
 
         public static void SendReportSilently(Exception exception, string developerMessage = "")
         {
             _reportCrash.Silent = true;
-            //_reportCrash.Send(exception);
         }
         #region test
         private double deltaX;

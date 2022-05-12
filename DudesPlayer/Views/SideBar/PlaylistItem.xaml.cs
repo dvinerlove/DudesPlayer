@@ -1,7 +1,6 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary;
+using ClassLibrary.Models;
 using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
-using DudesPlayer.Models.Client;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -42,8 +41,10 @@ namespace DudesPlayer.Views.SideBar
             {
                 Title.Text = url.Name;
             }
+
             this.ToolTip = Title.Text;
-            var currentURL = ClientData.Room.Settings.CurrentURL;
+
+            var currentURL = ClientData.Client.GetRoom().Settings.CurrentURL;
 
             if (currentURL != null && url.Id == currentURL.Id/* && url.Name == currentURL.Name && url.Url == currentURL.Url*/)
             {

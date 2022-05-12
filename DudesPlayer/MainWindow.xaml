@@ -11,7 +11,7 @@
               xmlns:views="clr-namespace:DudesPlayer.Views" 
               xmlns:player="clr-namespace:DudesPlayer.Views.Player"
         mc:Ignorable="d" 
-        
+        FontFamily="pack://application:,,,/;component/Fonts/#Segoe Fluent Icons"
         xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
         xmlns:wpfuiCommon="clr-namespace:WPFUI.Common;assembly=WPFUI"
         Style="{StaticResource UiWindow}"

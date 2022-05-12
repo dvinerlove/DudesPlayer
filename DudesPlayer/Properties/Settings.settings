@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="LibDirectory" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">vlc</Value>
     </Setting>
     <Setting Name="DefaultPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1111</Value>

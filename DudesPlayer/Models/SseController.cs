@@ -1,7 +1,6 @@
 ﻿using ClassLibrary;
 using ClassLibrary.Models;
 using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -76,51 +75,34 @@ namespace DudesPlayer.Models
                         switch (sse.Event)
                         {
                             case PacketType.Ping:
-                                Models.Client.VDebug.WriteLine("ping)");
+                                VDebug.WriteLine("ping)");
                                 break;
                             case PacketType.UpdateAll:
                                 var obj = sse.Data.ToString().ToObject(typeof(RoomInfo));
-                                if (obj != null)
+                                if (obj != null && ClientData.Client.GetRoom() != null)
                                 {
                                     var newRoom = (RoomInfo)obj;
 
-                                    if (newRoom.UsersCount() < ClientData.Room.UsersCount())
-                                    {
-                                        SoundHandler.Play(SoundType.logout);
-                                    }
+                                    
 
-                                    ClientData.Room = newRoom;
+                                    ClientData.Client.SetRoom(newRoom);
                                     ClientCommandHandler.UpdateInvoke();
-                                    Models.Client.VDebug.WriteLine("SSE ROOM DATA:");
-                                    Models.Client.VDebug.WriteLine(ClientData.Room.ToString());
+                                    if (newRoom.UsersCount() < ClientData.Client.GetRoom().UsersCount())
+                                    {
+                                        DudesPlayer.Models.SoundHandler.Play(SoundType.logout);
+                                    }
+                                    VDebug.WriteLine("SSE ROOM DATA:");
+                                    VDebug.WriteLine(ClientData.Client.GetRoom().ToString());
                                 }
                                 break;
-                                //case PacketType.Play:
-                                //    ClientCommandHandler.PlayInvoke();
-                                //    break;
-                                //case PacketType.Set:
-                                //    ClientCommandHandler.SetInvoke(sse.Data.ToString().ToObject<URLModel>());
-                                //    break;
-                                //case PacketType.Pause:
-                                //    ClientCommandHandler.PauseInvoke();
-                                //    break;
-                                //case PacketType.Time:
-                                //    ClientCommandHandler.TimeInvoke(sse.Data.ToString());
-                                //    break;
-                                //case PacketType.Joke:
-                                //    ClientCommandHandler.JokeInvoke(sse.Data.ToString());
-                                //    break;
-                                //case PacketType.Shake:
-                                //    ClientCommandHandler.ShakeInvoke();
-                                //    break;
                         }
-                        Models.Client.VDebug.WriteLine("SSE End...");
+                        VDebug.WriteLine("SSE End...");
                     }
                     catch (Exception ex)
                     {
                         _client = new RestClient($"{ClientData.BaseUrl}/sse/room/{ClientData.CurrentUser}");
                         _request = new RestRequest(Method.GET);
-                        Models.Client.VDebug.WriteLine("SSE EXCEPTION:\n" + ex.Message);
+                        VDebug.WriteLine("SSE EXCEPTION:\n" + ex.Message);
                     }
                 }
 

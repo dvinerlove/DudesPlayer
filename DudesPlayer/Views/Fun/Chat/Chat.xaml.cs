@@ -1,5 +1,6 @@
-﻿using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
+﻿using ClassLibrary;
+using ClassLibrary.Models;
+using DudesPlayer.Classes;
 using DudesPlayer.Models;
 using System;
 using System.Collections.Generic;
@@ -121,7 +122,12 @@ namespace DudesPlayer.Views.Fun.Chat
             {
                 Task.Factory.StartNew(() =>
                 {
-                    ClientData.Client.SendChatMessage(text);
+
+                    if (ClientData.SocketClient != null)
+                    {
+                        SSEEvent sse = new SSEEvent() { Event = PacketType.Chat, Data = text };
+                        ClientData.SocketClient.Send(sse.ToJson());
+                    }
                     Dispatcher.Invoke(() =>
                     {
                     });

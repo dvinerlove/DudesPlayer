@@ -1,8 +1,7 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary;
+using ClassLibrary.Models;
 using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
 using DudesPlayer.Models;
-using DudesPlayer.Models.Client;
 using DudesPlayer.Views.Fun.Chat;
 using DudesPlayer.Views.SideBar.Dialogs;
 using MaterialDesignThemes.Wpf;
@@ -37,6 +36,7 @@ namespace DudesPlayer.Views.Player
         public PlayerWindow()
         {
             InitializeComponent();
+
 
             SubsTB.Text = Properties.Settings.Default.SubsDirectory;
 
@@ -108,23 +108,23 @@ namespace DudesPlayer.Views.Player
 
         private void Update()
         {
-            if (lastSettings == null || lastSettings.IsEqual(ClientData.Room.Settings) == false)
+            if (lastSettings == null || lastSettings.IsEqual(ClientData.Client.GetRoom().Settings) == false)
             {
 
-                if (lastSettings == null || lastSettings.CurrentURL != ClientData.Room.Settings.CurrentURL)
+                if (lastSettings == null || lastSettings.CurrentURL != ClientData.Client.GetRoom().Settings.CurrentURL)
                 {
-                    if (ClientData.Room.Settings != null)
+                    if (ClientData.Client.GetRoom().Settings != null)
                     {
-                        currentURL = ClientData.Room.Settings.CurrentURL;
+                        currentURL = ClientData.Client.GetRoom().Settings.CurrentURL;
                         SetMedia(null, EventArgs.Empty);
                     }
                 }
-                if (lastSettings == null || lastSettings.Speed != ClientData.Room.Settings.Speed)
+                if (lastSettings == null || lastSettings.Speed != ClientData.Client.GetRoom().Settings.Speed)
                 {
                 }
-                if (lastSettings == null || lastSettings.State != ClientData.Room.Settings.State)
+                if (lastSettings == null || lastSettings.State != ClientData.Client.GetRoom().Settings.State)
                 {
-                    //switch (ClientData.Room.Settings.State)
+                    //switch (ClientData.Client.GetRoom().Settings.State)
                     //{
                     //    case RoomState.Play:
                     //        Resume(null, EventArgs.Empty);
@@ -136,11 +136,11 @@ namespace DudesPlayer.Views.Player
                     //        break;
                     //}
                 }
-                if (lastSettings == null || lastSettings.CurrentTime != ClientData.Room.Settings.CurrentTime)
+                if (lastSettings == null || lastSettings.CurrentTime != ClientData.Client.GetRoom().Settings.CurrentTime)
                 {
-                    //Time(ClientData.Room.Settings.CurrentTime!, EventArgs.Empty);
+                    //Time(ClientData.Client.GetRoom().Settings.CurrentTime!, EventArgs.Empty);
                 }
-                lastSettings = ClientData.Room.Settings;
+                lastSettings = ClientData.Client.GetRoom().Settings;
 
             }
         }
@@ -150,58 +150,64 @@ namespace DudesPlayer.Views.Player
             Startup();
         }
 
-        public async void Startup()
+        public void Startup()
         {
-            DirectoryInfo vlcLibDirectory;
+            Task.Factory.StartNew(() =>
+            {
+                Dispatcher.Invoke(async () =>
+                {
+                    try
+                    {
+                        if (vlcLibDirectory == null)
+                        {
+                            vlcLibDirectory = new DirectoryInfo(Properties.Settings.Default.LibDirectory);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        await DialogHost.Show(new SettingsDialog());
+                        Startup();
+                        return;
+                    }
 
-            try
-            {
-                vlcLibDirectory = new DirectoryInfo(Properties.Settings.Default.LibDirectory);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                await DialogHost.Show(new SettingsDialog());
-                Startup();
-                return;
-            }
+                    try
+                    {
+                        if (sourceProvider == null)
+                        {
+                            this.sourceProvider = new VlcVideoSourceProvider(this.Dispatcher);
+                        }
+                        if (audioProvider == null)
+                        {
+                            this.audioProvider = new VlcVideoSourceProvider(this.Dispatcher);
+                        }
 
-            try
-            {
-                this.sourceProvider = new VlcVideoSourceProvider(this.Dispatcher);
-                this.audioProvider = new VlcVideoSourceProvider(this.Dispatcher);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                await DialogHost.Show(new SettingsDialog());
-                Startup();
-                return;
-            }
-            try
-            {
-                this.sourceProvider.CreatePlayer(vlcLibDirectory);
-                this.audioProvider.CreatePlayer(vlcLibDirectory);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                await DialogHost.Show(new SettingsDialog());
-                Startup();
-                return;
-            }
-            try
-            {
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        await DialogHost.Show(new SettingsDialog());
+                        Startup();
+                        return;
+                    }
+                    try
+                    {
+                        this.sourceProvider.CreatePlayer(vlcLibDirectory);
+                        this.audioProvider.CreatePlayer(vlcLibDirectory);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        await DialogHost.Show(new SettingsDialog());
+                        Startup();
+                        return;
+                    }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
-
-            sourceProvider.MediaPlayer.PositionChanged += MediaPlayer_PositionChanged;
-            sourceProvider.MediaPlayer.EndReached += ClientCommandHandler_Disconnect;
+                    sourceProvider.MediaPlayer.PositionChanged += MediaPlayer_PositionChanged;
+                    sourceProvider.MediaPlayer.EndReached += ClientCommandHandler_Disconnect;
+                    sourceProvider.MediaPlayer.MediaChanged += MediaPlayer_MediaChanged;
+                });
+            });
         }
 
         private void Joke(object sender, EventArgs e)
@@ -209,7 +215,7 @@ namespace DudesPlayer.Views.Player
             Dispatcher.Invoke(() =>
             {
                 var tmp = sender.ToString().Split("?.?123**");
-                Joke joke = new Models.Joke() { setup = tmp[0], punchline = tmp[1] };
+                Joke joke = new Joke() { setup = tmp[0], punchline = tmp[1] };
                 DemotivatorToggle(joke);
             });
         }
@@ -229,7 +235,7 @@ namespace DudesPlayer.Views.Player
         {
             if (isSliderDragStarted == false && sender != null)
             {
-                Models.Client.VDebug.WriteLine(sender);
+                VDebug.WriteLine(sender);
                 if (sourceProvider.MediaPlayer.Time != (long)sender)
                 {
                     sourceProvider.MediaPlayer.Time = (long)sender;
@@ -249,11 +255,13 @@ namespace DudesPlayer.Views.Player
                     {
                         if (currentURL != null && string.IsNullOrEmpty(currentURL.Url) == false)
                         {
+
                             if (currentURL.URLType != URLType.link)
                             {
-                                this.audioProvider.MediaPlayer.Play();
+                                audioProvider.MediaPlayer.Play();
                             }
-                            this.sourceProvider.MediaPlayer.Play();
+
+                            sourceProvider.MediaPlayer.Play();
 
 
                             PlayBtn.Content = new PackIcon() { Kind = PackIconKind.Pause, Width = 40, Height = 40 };
@@ -276,7 +284,6 @@ namespace DudesPlayer.Views.Player
                     PlayBtn.Content = new PackIcon() { Kind = PackIconKind.Play, Width = 40, Height = 40 };
                     this.sourceProvider.MediaPlayer.Pause();
                     this.audioProvider.MediaPlayer.Pause();
-                    //ThreadPool.QueueUserWorkItem(_ => this.sourceProvider.MediaPlayer.Pause());
                 });
             });
         }
@@ -286,74 +293,69 @@ namespace DudesPlayer.Views.Player
 
         private void SetMedia(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(() =>
+            if (sender != null)
             {
-                if (sender != null)
-                {
-                    currentURL = (URLModel)sender;
+                currentURL = (URLModel)sender;
 
-                    if (currentURL == null)
-                    {
-                        return;
-                    }
-                }
-                else
+                if (currentURL == null)
                 {
                     return;
                 }
+            }
+            else
+            {
+                return;
+            }
 
-                try
+            try
+            {
+                new Uri(currentURL.Url);
+            }
+            catch
+            {
+                return;
+            }
+
+            Dispatcher.Invoke(() =>
+            {
+                SideMenu.TimeOut();
+                QualityCB.Items.Clear();
+                Title.Text = currentURL.GetTitle();
+                Subtitles.Load(currentURL);
+
+                switch (currentURL.URLType)
                 {
-                    new Uri(currentURL.Url);
+                    case URLType.link:
+                        if (QualityCB.Visibility != Visibility.Collapsed)
+                        {
+                            QualityCB.Visibility = Visibility.Collapsed;
+                        }
+                        SetVideo(currentURL.Url);
+                        break;
+                    case URLType.youtube:
+                        QualityCB.Visibility = Visibility.Visible;
+                        SetYouTubeVideo(currentURL.Url);
+                        break;
+                    default:
+                        break;
                 }
-                catch
-                {
-                    return;
-                }
-
-                Dispatcher.Invoke(() =>
-                {
-                    SideMenu.TimeOut();
-                    QualityCB.Items.Clear();
-                    Title.Text = currentURL.GetTitle();
-                    Subtitles.Load(currentURL);
-
-                    Models.Client.VDebug.WriteLine("new media: " + currentURL.Name + " " + currentURL.Url);
-
-                    switch (currentURL.URLType)
-                    {
-                        case URLType.link:
-                            if (QualityCB.Visibility != Visibility.Collapsed)
-                            {
-                                QualityCB.Visibility = Visibility.Collapsed;
-                            }
-                            SetVideo(currentURL.Url);
-                            break;
-                        case URLType.youtube:
-                            QualityCB.Visibility = Visibility.Visible;
-                            SetYouTubeVideo(currentURL.Url);
-                            break;
-                        default:
-                            break;
-                    }
-                });
-
-
             });
-
         }
 
-        private async void SetYouTubeVideo(string url, string quality = "1080")
+        private void SetYouTubeVideo(string url, string quality = "1080")
         {
-
             var youtube = new YoutubeClient();
             try
             {
-                var manifest = await youtube.Videos.Streams.GetManifestAsync(url);
-                var streams = manifest.GetVideoOnlyStreams();
-
-                await Task.Factory.StartNew(() =>
+                Task.Factory.StartNew(async () =>
                 {
+                    var manifest = await youtube.Videos.Streams.GetManifestAsync(url);
+
+                    var streams = manifest.GetVideoOnlyStreams();
+
+                    //UrlExtractor.GetVideo(currentURL.Url, quality);
+                    //UrlExtractor.GetAudio(currentURL.Url);
+
                     Dispatcher.Invoke(() =>
                     {
                         QualityCB.SelectionChanged -= QualityCB_SelectionChanged;
@@ -363,172 +365,136 @@ namespace DudesPlayer.Views.Player
                             QualityCB.Items.Add(new ComboBoxItem() { Content = item + "      ", IsSelected = item.Contains(quality.Trim()) });
                         }
                         QualityCB.SelectionChanged += QualityCB_SelectionChanged;
+
+                        var videoStream = streams.Where(x => x.VideoQuality.Label.Contains(quality.Trim())).FirstOrDefault();
+
+                        if (videoStream == null)
+                        {
+                            videoStream = manifest.GetVideoOnlyStreams().FirstOrDefault();
+                            foreach (var item in QualityCB.Items.OfType<ComboBoxItem>())
+                            {
+                                if (item.Content.ToString().Contains(videoStream.VideoQuality.Label))
+                                {
+                                    item.IsSelected = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            VDebug.WriteLine(videoStream.Url);
+                        }
+
+                        var audioStreams = manifest.GetAudioOnlyStreams();
+
+                        YoutubeExplode.Videos.Streams.AudioOnlyStreamInfo audioStream = audioStreams.FirstOrDefault();
+                        foreach (var item in audioStreams)
+                        {
+                            if (item.Bitrate.MegaBitsPerSecond > audioStream.Bitrate.MegaBitsPerSecond)
+                            {
+                                audioStream = item;
+                            }
+                        }
+                        SetVideo(videoStream.Url, audioStream.Url);
                     });
                 });
 
 
-                UrlExtractor.GetVideo(currentURL.Url, quality);
-                UrlExtractor.GetAudio(currentURL.Url);
 
-                var videoStream = streams.Where(x => x.VideoQuality.Label.Contains(quality.Trim())).FirstOrDefault();
-
-
-                if (videoStream == null)
-                {
-                    videoStream = manifest.GetVideoOnlyStreams().FirstOrDefault();
-                    foreach (var item in QualityCB.Items.OfType<ComboBoxItem>())
-                    {
-                        if (item.Content.ToString().Contains(videoStream.VideoQuality.Label))
-                        {
-                            item.IsSelected = true;
-                        }
-                    }
-                }
-                else
-                {
-                    VDebug.WriteLine(videoStream.Url);
-                }
-                var audioStreams = manifest.GetAudioOnlyStreams();
-
-                YoutubeExplode.Videos.Streams.AudioOnlyStreamInfo audioStream = audioStreams.FirstOrDefault();
-                foreach (var item in audioStreams)
-                {
-                    VDebug.WriteLine(item.Bitrate.MegaBitsPerSecond);
-                    if (item.Bitrate.MegaBitsPerSecond > audioStream.Bitrate.MegaBitsPerSecond)
-                    {
-                        audioStream = item;
-                    }
-                }
-                SetVideo(videoStream.Url, audioStream.Url);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "youtube alert");
             }
-
         }
 
-
-
-        private void SetVideo(string url, string audioUrl = null)
+        private async void SetVideo(string url, string audioUrl = null)
         {
-            try
-            {
-                List<string> options = new List<string>()
+
+            List<string> options = new List<string>()
                     {
-                         new string(":network-caching=2000"),
-                         new string( "--aout=directsound" ),
+                        new string( "--network-caching=6000" ),
+                        new string( ":network-caching=6000" ),
+                        new string( "--aout=directsound" ),
                     };
 
+            options.AddRange(await FindSubtitles());
 
-                Task.Factory.StartNew(() =>
+            PlayBtn.Content = new PackIcon() { Kind = PackIconKind.Play, Width = 40, Height = 40 };
+
+            ThreadPool.QueueUserWorkItem(async _ =>
+            {
+                sourceProvider.MediaPlayer.Pause();
+                audioProvider.MediaPlayer.Pause();
+                while (sourceProvider.MediaPlayer.IsPlaying() == true)
                 {
-                    Dispatcher.Invoke(() =>
-                    {
-                        try
-                        {
-                            PlayBtn.Content = new PackIcon() { Kind = PackIconKind.Pause, Width = 40, Height = 40 };
+                    await Task.Delay(100);
+                }
+                sourceProvider.MediaPlayer.SetMedia(new Uri(url), options.ToArray());
 
-                            FindSubtitles(ref options);
+                if (string.IsNullOrEmpty(audioUrl) == false)
+                {
+                    audioProvider.MediaPlayer.SetMedia(new Uri(audioUrl), options.ToArray());
+                }
+            });
 
+            try
+            {
+                try
+                {
+                    Video.SetBinding(System.Windows.Controls.Image.SourceProperty,
+                    new Binding(nameof(VlcVideoSourceProvider.VideoSource)) { Source = sourceProvider });
 
-                            if (string.IsNullOrEmpty(audioUrl) == false)
-                            {
-                                this.audioProvider.MediaPlayer.SetMedia(new Uri(audioUrl), options.ToArray());
-                            }
-                            else
-                            {
-                                this.audioProvider.MediaPlayer.Stop();
-                            }
-                            try
-                            {
-                                var media = this.sourceProvider.MediaPlayer.GetMedia();
-                                if (media != null)
-                                {
-                                    VDebug.WriteLine(media.Mrl);
-                                    VDebug.WriteLine(media.URL);
-                                    VDebug.WriteLine(media.Title);
-                                    VDebug.WriteLine(sourceProvider.MediaPlayer.Video.GetHashCode());
-                                }
-                                ThreadPool.QueueUserWorkItem(_ => this.sourceProvider.MediaPlayer.SetMedia(new Uri(url), options.ToArray()));
-                            }
-                            catch
-                            {
-                            }
+                    BackgroundVideo.SetBinding(System.Windows.Controls.Image.SourceProperty,
+                        new Binding(nameof(VlcVideoSourceProvider.VideoSource)) { Source = sourceProvider });
 
-                            try
-                            {
-                                this.sourceProvider.MediaPlayer.MediaChanged -= MediaPlayer_MediaChanged;
-                                this.sourceProvider.MediaPlayer.MediaChanged += MediaPlayer_MediaChanged;
-                            }
-                            catch
-                            {
+                    MaxTime.Text = sourceProvider.MediaPlayer.Length.ToCorrectTime();
 
-                            }
+                }
+                finally
+                {
+                    VideoGrid.Visibility = Visibility.Visible;
+                }
 
-                            try
-                            {
-                                this.Video.SetBinding(System.Windows.Controls.Image.SourceProperty,
-                                new Binding(nameof(VlcVideoSourceProvider.VideoSource)) { Source = sourceProvider });
-
-                                this.BackgroundVideo.SetBinding(System.Windows.Controls.Image.SourceProperty,
-                                    new Binding(nameof(VlcVideoSourceProvider.VideoSource)) { Source = sourceProvider });
-
-                                sourceProvider.MediaPlayer.SetVideoTitleDisplay(Vlc.DotNet.Core.Interops.Signatures.Position.Top, 10);
-                                MaxTime.Text = sourceProvider.MediaPlayer.Length.ToCorrectTime();
-
-                                this.sourceProvider.MediaPlayer.Play();
-                                this.audioProvider.MediaPlayer.Play();
-                            }
-                            catch
-                            {
-                            }
-
-                            VideoGrid.Visibility = Visibility.Visible;
-                        }
-                        catch (Exception ex)
-                        {
-                            VDebug.WriteLine(ex.ToMessageString());
-                        }
-                    });
-                });
+                return;
             }
             catch (Exception ex)
             {
                 VDebug.WriteLine(ex.ToMessageString());
-                SetVideo(url, audioUrl);
+                return;
             }
+
 
         }
 
-        private void FindSubtitles(ref List<string> options)
+        private async Task<List<string>> FindSubtitles()
         {
-
             VDebug.WriteLine("Subs Directory");
             VDebug.WriteLine(Properties.Settings.Default.SubsDirectory);
             VDebug.WriteLine("Subs Url");
             VDebug.WriteLine(currentURL.Url.Substring(0, currentURL.Url.Length - 3) + "srt");
 
+            List<string> strings = new List<string>();
+
             if (string.IsNullOrEmpty(Properties.Settings.Default.SubsDirectory))
             {
-                return;
+                return strings;
             }
 
             string subFile = Properties.Settings.Default.SubsDirectory + @"\" + Title.Text.Substring(0, Title.Text.Length - 3) + "srt";
 
-            VDebug.WriteLine("subtitle");
-            VDebug.WriteLine(subFile);
-
             if (File.Exists(subFile) == false)
             {
-                ClientData.Client.TrySaveSubtitle(Title.Text.Substring(0, Title.Text.Length - 3));
+                File.Delete(subFile);
             }
+
+            await ClientData.Client.TrySaveSubtitle(Title.Text.Substring(0, Title.Text.Length - 3), Properties.Settings.Default.SubsDirectory);
 
             if (File.Exists(subFile))
             {
-                options.Add(new string("--sub-file=" + subFile));
-                options.Add(new string("sub-file=" + subFile));
+                strings.Add(new string("--sub-file=" + subFile));
+                strings.Add(new string("sub-file=" + subFile));
             }
+            return strings;
         }
 
         internal void PlayToggle()
@@ -545,7 +511,6 @@ namespace DudesPlayer.Views.Player
                     ClientData.Client.Play();
                 }
             });
-
         }
 
         private async void Subs_Click(object sender, RoutedEventArgs e)
@@ -557,6 +522,13 @@ namespace DudesPlayer.Views.Player
         private void MediaPlayer_MediaChanged(object sender, Vlc.DotNet.Core.VlcMediaPlayerMediaChangedEventArgs e)
         {
             CheckSettings();
+
+            ThreadPool.QueueUserWorkItem(async _ =>
+            {
+                await Task.Delay(100);
+                Resume(null, EventArgs.Empty);
+            });
+            //ThreadPool.QueueUserWorkItem(_ => this.audioProvider.MediaPlayer.Play());
         }
 
         private void CheckSettings()
@@ -623,6 +595,7 @@ namespace DudesPlayer.Views.Player
             }
             catch
             {
+
             }
         }
 
@@ -648,7 +621,6 @@ namespace DudesPlayer.Views.Player
             {
                 Dispatcher.Invoke(() =>
                 {
-
                     try
                     {
                         if (sourceProvider.MediaPlayer.Time == 0 ||
@@ -662,7 +634,6 @@ namespace DudesPlayer.Views.Player
 
                             if (abs > 300)
                             {
-                                //audioProvider.MediaPlayer.Position = sourceProvider.MediaPlayer.Position;
                                 audioProvider.MediaPlayer.Time = sourceProvider.MediaPlayer.Time;
                             }
                         }
@@ -890,13 +861,14 @@ namespace DudesPlayer.Views.Player
                     ClientData.Client.SetTime(value);
                 });
             }
-
         }
 
         private void Slider_ValueChanged_2(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
         }
         bool isDrahStarted = false;
+        private DirectoryInfo vlcLibDirectory;
+
         private void Slider_DragStarted_1(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
         {
             isDrahStarted = true;
@@ -941,7 +913,6 @@ namespace DudesPlayer.Views.Player
         {
             if (PlaylistDialog.Visibility == Visibility.Collapsed)
                 PlaylistToggle();
-
         }
 
         private void ChatToggle()
@@ -1059,7 +1030,6 @@ namespace DudesPlayer.Views.Player
                     }
                 });
             });
-
         }
 
         private void ChatBadge_MouseDown(object sender, MouseButtonEventArgs e)

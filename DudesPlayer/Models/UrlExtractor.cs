@@ -1,6 +1,7 @@
-﻿using DotNetTools.SharpGrabber;
+﻿using ClassLibrary;
+using DotNetTools.SharpGrabber;
 using DotNetTools.SharpGrabber.Grabbed;
-using DudesPlayer.Models.Client;
+using DudesPlayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

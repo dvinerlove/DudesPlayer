@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace DudesPlayer.Models.Client
+namespace ClassLibrary
 {
     public static class VDebug
     {
-        static public event EventHandler DebugEvent;
+        static public event EventHandler? DebugEvent;
 
         public static void WriteLine(object str)
         {
@@ -13,7 +13,7 @@ namespace DudesPlayer.Models.Client
             {
                 str = "null";
             }
-            str = str.ToString().Replace("|", "\t");
+            str = str.ToString()!.Replace("|", "\t");
             DebugEvent?.Invoke(str, EventArgs.Empty);
             Debug.WriteLine(str);
         }

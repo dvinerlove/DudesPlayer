@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ClassLibrary.Models;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,6 @@ using System.Threading.Tasks;
 
 namespace DudesPlayer.Models
 {
-    public class Joke
-    {
-        public string type;
-        public string setup;
-        public string punchline;
-    }
     public static class RandomJoke
     {
         static Random Random = new Random();

@@ -1,6 +1,6 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary;
+using ClassLibrary.Models;
 using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
 using DudesPlayer.Views.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -196,13 +196,12 @@ namespace DudesPlayer.Views
                 ClientData.Client.AddUrl(uRLModel);
 
                 MaterialDesignThemes.Wpf.DialogHost.CloseDialogCommand.Execute(false, null);
-                //}
                 SearchBtn.IsEnabled = true;
 
             }
             catch (Exception ex)
             {
-                Models.Client.VDebug.WriteLine(ex.Message);
+                VDebug.WriteLine(ex.Message);
             }
         }
 

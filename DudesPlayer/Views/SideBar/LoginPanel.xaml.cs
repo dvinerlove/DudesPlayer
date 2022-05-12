@@ -1,7 +1,7 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary;
+using ClassLibrary.Models;
 using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
-using DudesPlayer.Client;
+using DudesPlayer.Models;
 using RandomFriendlyNameGenerator;
 using System;
 using System.Collections.Generic;
@@ -146,20 +146,39 @@ namespace DudesPlayer.Views.SideBar
                 };
 
                 ClientData.CurrentUser = token;
+                ClientData.Client.SetUser(token);
+
                 bool isConnected = false;
                 Task.Factory.StartNew(() =>
                 {
-
                     if (isHostChecked == true)
                     {
                         if (ClientData.Client.CreateRoom())
                         {
+                            //ClientData.Client.GetRoom() = ClientData.Client.GetRoom();
+                            ClientData.CurrentUser.RoomName = ClientData.Client.GetRoom().Name;
+
                             isConnected = ClientData.Client.Login();
                         }
                     }
                     else
                     {
                         isConnected = ClientData.Client.Login();
+                    }
+                    if (isConnected)
+                    {
+                        ClientData.SseController = new SseController();
+                        ClientData.SseController.Run();
+                        if (ClientData.SocketClient == null)
+                        {
+                            ClientData.SocketClient = new SocketClient();
+                        }
+                        else
+                        {
+                            ClientData.SocketClient.Stop();
+                            ClientData.SocketClient = new SocketClient();
+                        }
+                        ClientData.SocketClient.Start();
                     }
 
                     Dispatcher.Invoke(() =>

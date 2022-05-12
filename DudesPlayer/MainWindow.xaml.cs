@@ -1,7 +1,6 @@
-﻿using ControlzEx.Theming;
+﻿using ClassLibrary;
+using ControlzEx.Theming;
 using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
-using DudesPlayer.Models.Client;
 using MahApps.Metro.Controls;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -32,7 +31,7 @@ namespace DudesPlayer
             Loaded += (sender, args) =>
             {
                 WPFUI.Appearance.Watcher.Watch(this);
-                WPFUI.Appearance.Theme.Set(WPFUI.Appearance.ThemeType.Dark);
+                WPFUI.Appearance.Theme.Apply(WPFUI.Appearance.ThemeType.Dark);
                 WPFUI.Appearance.Background.ApplyDarkMode(this);
             };
 
@@ -48,8 +47,9 @@ namespace DudesPlayer
 
             if (string.IsNullOrEmpty(Properties.Settings.Default.LibDirectory))
             {
-                Properties.Settings.Default.LibDirectory = "vlc.zip";
+                Properties.Settings.Default.LibDirectory = "vlc";
             }
+            Properties.Settings.Default.LibDirectory = "x64";
 
             if (string.IsNullOrEmpty(Properties.Settings.Default.SubsDirectory))
             {
@@ -115,17 +115,18 @@ namespace DudesPlayer
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            //MessageBox.Show(sender.ToString(),sender.GetType().ToString());
             ClientData.Client.Disconnect();
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
         {
+            //MessageBox.Show(sender.ToString(),sender.GetType().ToString());
             ClientData.Client.Disconnect();
         }
 
         private void MainWindow_StateChanged(object sender, EventArgs e)
         {
-
             if (WindowState == WindowState.Maximized)
             {
                 btnMaximize.Visibility = Visibility.Collapsed;
@@ -168,7 +169,6 @@ namespace DudesPlayer
             }
             catch 
             {
-
             }
             
         }

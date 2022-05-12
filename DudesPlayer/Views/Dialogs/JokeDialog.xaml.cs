@@ -1,5 +1,6 @@
-﻿using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
+﻿using ClassLibrary.Models;
+using DudesPlayer.Classes;
+using DudesPlayer.Classes;
 using DudesPlayer.Models;
 using System;
 using System.Collections.Generic;

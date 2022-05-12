@@ -1,7 +1,6 @@
 ﻿using ClassLibrary;
 using ClassLibrary.Models;
 using DudesPlayer.Classes;
-using DudesPlayer.Classes.Client;
 using DudesPlayer.Views.SideBar;
 using DudesPlayer.Views.SideBar.Dialogs;
 using MaterialDesignThemes.Wpf;
@@ -50,20 +49,24 @@ namespace DudesPlayer.Views
         {
             Dispatcher.Invoke(() =>
             {
-
+                var room = ClientData.Client.GetRoom();
+                if (room == null || room.Name == null || room.GetUsers() == null || room.Settings == null || room.UsersCount() == 0)
+                {
+                    return;
+                }
                 UsersPanel.Children.Clear();
-                List<UserModel> users = ClientData.Room.GetUsers();
-                Models.Client.VDebug.WriteLine("room: " + ClientData.Room.ToJson());
-                HeaderText.Text = $"ROOM {ClientData.Room.Name}";
-                Models.Client.VDebug.WriteLine("users lenght: " + users.Count());
+                List<UserModel> users = room.GetUsers();
+                VDebug.WriteLine("room: " + room.ToJson());
+                HeaderText.Text = $"ROOM {room.Name}";
+                VDebug.WriteLine("users lenght: " + users.Count());
                 foreach (UserModel item in users)
                 {
                     UsersPanel.Children.Add(new UserItem(item));
                 }
 
                 PlaylistStack.Children.Clear();
-                var urls = ClientData.Room.GetURls();
-                Models.Client.VDebug.WriteLine("urls lenght: " + urls.Count());
+                var urls = room.GetURls();
+                VDebug.WriteLine("urls lenght: " + urls.Count());
                 foreach (var item in urls)
                 {
                     PlaylistStack.Children.Add(new PlaylistItem(item) { Menu = this });
@@ -137,6 +140,7 @@ namespace DudesPlayer.Views
             SSEEvent sse = new SSEEvent() { Event = PacketType.Logout, Data = "bye" };
             ClientData.SocketClient.Send(sse.ToJson());
             ClientCommandHandler.DisconnectInvoke("");
+            ClientData.Client.Disconnect();
         }
 
         private void Demotivator_Click(object sender, RoutedEventArgs e)

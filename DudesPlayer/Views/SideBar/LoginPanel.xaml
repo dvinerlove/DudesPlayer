@@ -8,7 +8,7 @@
              xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
               d:DesignWidth="300" MinHeight="410"   >
     <Grid x:Name="OnlineGrid" Panel.ZIndex="99999">
-        <wpfui:Badge Height="410" Background="{DynamicResource SecondaryBackgroundColor}" x:Name="LoginStack" VerticalAlignment="Top" Opacity="1">
+        <wpfui:Badge Margin="0 0 0 0" Height="410" Background="{DynamicResource SecondaryBackgroundColor}" x:Name="LoginStack" VerticalAlignment="Top" Opacity="1">
             <Grid  >
                  
                 <StackPanel  Margin="0 56 0 0 ">
