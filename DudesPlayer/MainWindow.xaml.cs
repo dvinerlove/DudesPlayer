@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+﻿using DudesPlayer.Library;
 using ControlzEx.Theming;
 using DudesPlayer.Classes;
 using MahApps.Metro.Controls;
@@ -11,7 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using WPFUI.Common;
+using Wpf.Ui;
 //using System.Windows.Media;
 //using System.Windows.Media.Animation;
 namespace DudesPlayer
@@ -30,9 +30,9 @@ namespace DudesPlayer
 
             Loaded += (sender, args) =>
             {
-                WPFUI.Appearance.Watcher.Watch(this);
-                WPFUI.Appearance.Theme.Apply(WPFUI.Appearance.ThemeType.Dark);
-                WPFUI.Appearance.Background.ApplyDarkMode(this);
+                Wpf.Ui.Appearance.Watcher.Watch(this);
+                Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark);
+                //Wpf.Ui.Appearance.Background.Apply();
             };
 
             SetTheme();
@@ -167,10 +167,10 @@ namespace DudesPlayer
 
                 paletteHelper.SetTheme(theme1);
             }
-            catch 
+            catch
             {
             }
-            
+
         }
 
         private static void ModifyTheme(Action<ITheme> modificationAction)
@@ -223,7 +223,8 @@ namespace DudesPlayer
             ta.To = new Thickness(0, 0, 0, 0);
             sb.Children.Add(ta);
             sb.Begin(this);
-            MainAppBar.Height = new GridLength(32);
+            MainAppBar.Height = new GridLength(24);
+            PlayerWindow.topMenu.Visibility = Visibility.Visible;
         }
 
         public void HideMenu()
@@ -242,71 +243,95 @@ namespace DudesPlayer
             sb.Begin(this);
             MainAppBar.Height = new GridLength(0);
             isMenuShow = false;
+            PlayerWindow.topMenu.Visibility = Visibility.Collapsed;
         }
 
         private bool isEscKeyUp = true;
         private bool isFKeyUp = true;
+
+        private bool isUpKeyUp = true;
+        private bool isDownKeyUp = true;
+
         public bool IsInputFocused = false;
+
         private bool isDebugMode;
-        private bool isSpaceKeyUp;
+        private bool isSpaceKeyUp = true;
 
         private void MetroWindow_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F)
             {
                 isFKeyUp = true;
+                e.Handled = true;
             }
-            if (e.Key == Key.Escape)
+            if (e.Key == Key.Escape || e.Key == Key.Tab)
             {
                 isEscKeyUp = true;
+                e.Handled = true;
             }
-            if (e.Key == Key.Tab)
-            {
-            }
+
+
             if (e.Key == Key.Space)
             {
                 isSpaceKeyUp = true;
+                e.Handled = true;
+            }
+
+            if (e.Key == Key.Up || e.Key == Key.VolumeUp)
+            {
+                isUpKeyUp = true;
+                e.Handled = true;
+            }
+
+            if (e.Key == Key.Down || e.Key == Key.VolumeDown)
+            {
+                isDownKeyUp = true;
+                e.Handled = true;
+            }
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
+            {
+                e.Handled = true;
             }
         }
         public void ToggleFullScreen()
         {
             if (WindowState != WindowState.Maximized)
             {
-                //this.Visibility = Visibility.Collapsed;
-                //WindowStyle = WindowStyle.None;
                 this.ResizeMode = ResizeMode.NoResize;
                 WindowState = WindowState.Maximized;
-                //this.Visibility = Visibility.Visible;
             }
             else
             {
-                //WindowStyle = WindowStyle.SingleBorderWindow;
                 WindowState = WindowState.Normal;
                 this.ResizeMode = ResizeMode.CanResize;
-
             }
         }
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            if (IsLoaded == false)
+            //if (IsLoaded == false)
+            //{
+            //    return;
+            //}
+            //if (e.Key == Key.F8)
+            //{
+            //    if (DebugCard.Visibility == Visibility.Visible)
+            //    {
+            //        DebugCard.Visibility = Visibility.Collapsed;
+            //        isDebugMode = true;
+            //    }
+            //    else
+            //    {
+            //        DebugCard.Visibility = Visibility.Visible;
+            //    }
+            //    return;
+            //}
+
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
             {
-                return;
-            }
-            if (e.Key == Key.F8)
-            {
-                if (DebugCard.Visibility == Visibility.Visible)
-                {
-                    DebugCard.Visibility = Visibility.Collapsed;
-                    isDebugMode = true;
-                }
-                else
-                {
-                    DebugCard.Visibility = Visibility.Visible;
-                }
-                return;
+                e.Handled = true;
             }
 
-
+            VDebug.WriteLine(e.ImeProcessedKey + " " + e.DeadCharProcessedKey + e.SystemKey);
 
             if (PlayerWindow.PlaylistDialog.Visibility != Visibility.Visible &&
                 PlayerWindow.ChatDialog.Visibility != Visibility.Visible &&
@@ -322,6 +347,7 @@ namespace DudesPlayer
                         }
                     }
                     isFKeyUp = false;
+                    e.Handled = true;
                     return;
                 }
 
@@ -332,21 +358,46 @@ namespace DudesPlayer
                         PlayerWindow.PlayToggle();
                     }
                     isSpaceKeyUp = false;
+                    e.Handled = true;
                     return;
                 }
 
+                if (e.Key == Key.Up || e.Key == Key.VolumeUp)
+                {
+                    e.Handled = true;
+                    if (isUpKeyUp)
+                    {
+                        PlayerWindow.VulumeUp();
+                    }
+                }
+                else
+                {
+                    //isUpKeyUp = false;
+                }
+
+
+
+                if (e.Key == Key.Down || e.Key == Key.VolumeDown)
+                {
+                    e.Handled = true;
+                    if (isDownKeyUp)
+                    {
+                        PlayerWindow.VulumeDown();
+                    }
+                }
+                else
+                {
+                    //isDownKeyUp = false;
+                }
             }
-
-
-
-
-
             if (e.Key == Key.Tab)
             {
                 e.Handled = true;
+                e.Handled = true;
             }
-            if (e.Key == Key.Escape)
+            if (e.Key == Key.Escape || e.Key == Key.Tab)
             {
+                e.Handled = true;
                 if (isEscKeyUp)
                 {
                     if (DialogHost.IsDialogOpen(null))
@@ -378,7 +429,9 @@ namespace DudesPlayer
 
         private void btnMaximize_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Maximized;
+            //WindowState = WindowState.Maximized;
+
+            ToggleFullScreen();
         }
 
         private void btnRestore_Click(object sender, RoutedEventArgs e)

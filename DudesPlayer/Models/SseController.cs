@@ -1,5 +1,5 @@
-﻿using ClassLibrary;
-using ClassLibrary.Models;
+﻿using DudesPlayer.Library;
+using DudesPlayer.Library.Models;
 using DudesPlayer.Classes;
 using RestSharp;
 using System;
@@ -37,7 +37,6 @@ namespace DudesPlayer.Models
 
         public void Run()
         {
-
             try
             {
 
@@ -67,10 +66,6 @@ namespace DudesPlayer.Models
                         {
                             continue;
                         }
-                        else
-                        {
-                        }
-
 
                         switch (sse.Event)
                         {
@@ -82,9 +77,6 @@ namespace DudesPlayer.Models
                                 if (obj != null && ClientData.Client.GetRoom() != null)
                                 {
                                     var newRoom = (RoomInfo)obj;
-
-                                    
-
                                     ClientData.Client.SetRoom(newRoom);
                                     ClientCommandHandler.UpdateInvoke();
                                     if (newRoom.UsersCount() < ClientData.Client.GetRoom().UsersCount())
@@ -105,7 +97,6 @@ namespace DudesPlayer.Models
                         VDebug.WriteLine("SSE EXCEPTION:\n" + ex.Message);
                     }
                 }
-
             }
             catch
             {

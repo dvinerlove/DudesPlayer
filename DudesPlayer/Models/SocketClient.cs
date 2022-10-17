@@ -1,28 +1,25 @@
-﻿using ClassLibrary;
-using ClassLibrary.Models;
+﻿using DudesPlayer.Library;
+using DudesPlayer.Library.Models;
 using DudesPlayer.Classes;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using Websocket.Client;
 
 namespace DudesPlayer.Models
 {
-    public class SocketClient
+    public class SignalRClient
     {
         HubConnection hubConnection;
 
         string user;
 
         string room;
-        public SocketClient()
+
+        public SignalRClient()
         {
 
         }
+
         public async void Stop()
         {
             if (hubConnection != null)
@@ -44,7 +41,7 @@ namespace DudesPlayer.Models
             }
 
             hubConnection = new HubConnectionBuilder()
-            .WithUrl("http://dudesplayer.somee.com/chat")
+            .WithUrl($"{Settings.BaseUrl}/chat")
             .Build();
             hubConnection.Closed += async (error) =>
             {
@@ -61,10 +58,16 @@ namespace DudesPlayer.Models
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    MessageReceived(user, message);
+                    try
+                    {
+                        MessageReceived(user, message);
+                    }
+                    catch (Exception ex)
+                    {
+                        VDebug.WriteLine(ex.Message);
+                    }
                 });
             });
-
         }
         public void Send(string message)
         {
@@ -183,7 +186,6 @@ namespace DudesPlayer.Models
                     break;
             }
             VDebug.WriteLine("SSE End...");
-
         }
     }
 }

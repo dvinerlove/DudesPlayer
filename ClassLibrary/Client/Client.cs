@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
-using ClassLibrary;
-using ClassLibrary.Models;
+using DudesPlayer.Library;
+using DudesPlayer.Library.Models;
 using RestSharp;
 using Newtonsoft.Json;
 using System.IO;
 using System.Collections.Generic;
 
-namespace ClassLibrary.Client
+namespace DudesPlayer.Library.Client
 {
     public enum ApiType
     {
@@ -58,8 +58,6 @@ namespace ClassLibrary.Client
 
         public bool Login()
         {
-
-
             var result = Post(ApiType.users, "", /*ClientData.CurrentUser.ToString()*/currentUser.ToString(), Method.POST);
             //if (result)
             //{
@@ -225,9 +223,16 @@ namespace ClassLibrary.Client
             }
             if (string.IsNullOrEmpty(resp.Content) == false)
             {
-                File.Create(@$"{subtitlesDirectoryPath}\{fileName}srt").Close();
-                var file = File.WriteAllTextAsync(@$"{subtitlesDirectoryPath}\{fileName}srt", resp.Content);
-                
+                try
+                {
+                    File.Create(@$"{subtitlesDirectoryPath}\{fileName}srt").Close();
+                    var file = File.WriteAllTextAsync(@$"{subtitlesDirectoryPath}\{fileName}srt", resp.Content);
+                }
+                catch
+                {
+
+                }
+
             }
             return fileName;
         }
@@ -239,7 +244,7 @@ namespace ClassLibrary.Client
             var resp = client.Execute(request1);
             if (string.IsNullOrEmpty(resp.Content) == false)
             {
-                return resp.Content.ToObject<List<RoomInfo>>();
+                return resp.Content.ToObject<List<RoomInfo>>()??new List<RoomInfo>();
             }
             else
             {
@@ -254,7 +259,7 @@ namespace ClassLibrary.Client
             var resp = client.Execute(request1);
             if (string.IsNullOrEmpty(resp.Content) == false)
             {
-                return resp.Content.ToObject<List<URLModel>>();
+                return resp.Content.ToObject<List<URLModel>>()??new List<URLModel>();
             }
             else
             {

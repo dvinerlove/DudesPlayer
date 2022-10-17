@@ -1,62 +1,174 @@
-﻿<UserControl x:Class="DudesPlayer.Views.SideBar.LoginPanel"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DudesPlayer.Views.SideBar" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
-              d:DesignWidth="300" MinHeight="410"   >
+﻿<UserControl
+    x:Class="DudesPlayer.Views.SideBar.LoginPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DudesPlayer.Views.SideBar"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    mc:Ignorable="d">
     <Grid x:Name="OnlineGrid" Panel.ZIndex="99999">
-        <wpfui:Badge Margin="0 0 0 0" Height="410" Background="{DynamicResource SecondaryBackgroundColor}" x:Name="LoginStack" VerticalAlignment="Top" Opacity="1">
-            <Grid  >
-                 
-                <StackPanel  Margin="0 56 0 0 ">
-                    <StackPanel Orientation="Horizontal" Margin=" 0 8 0 0">
-                        <Grid Margin="16 8 8 8" >
-
-                            <Button Visibility="Visible" Width="75" Height="75" Style="{DynamicResource IconButton}" Opacity="1" Click="Button_Click"/>
-                            <Button Visibility="Collapsed" Margin="0 0 0 0" Width="75" Height="75" Style="{DynamicResource MaterialDesignIconButton}" Click="Button_Click">
-                            </Button>
-                            <materialDesign:Card ClipContent="True" materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="50" Width="75" Height="75">
+        <wpfui:Badge
+            x:Name="LoginStack"
+            Height="410"
+            Margin="0,0,0,0"
+            VerticalAlignment="Top"
+            Background="{DynamicResource SecondaryBackgroundColor}"
+            Opacity="1">
+            <Grid>
+                <StackPanel Margin="0,56,0,0">
+                    <StackPanel Margin="0,8,0,0" Orientation="Vertical">
+                        <Grid Margin="8,8,8,8">
+                            <Button
+                                Width="75"
+                                Height="75"
+                                Click="Button_Click"
+                                Opacity="1"
+                                Style="{DynamicResource IconButton}"
+                                Visibility="Visible" />
+                            <Button
+                                Width="75"
+                                Height="75"
+                                Margin="0,0,0,0"
+                                Click="Button_Click"
+                                Style="{DynamicResource MaterialDesignIconButton}"
+                                Visibility="Collapsed" />
+                            <Border
+                                x:Name="Border1"
+                                Width="75"
+                                Height="75"
+                                materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                ClipToBounds="True"
+                                CornerRadius="50">
                                 <Grid>
-                                    <Image  Stretch="Fill" StretchDirection="Both"  RenderOptions.BitmapScalingMode="NearestNeighbor"   VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding ElementName=AvatarImage, Path=ImageSource}" RenderTransformOrigin="0.5,0.5"/>
-                                    <wpfui:Button Click="Button_Click" Style="{DynamicResource MaterialDesignIconButton}" Appearance="Transparent" Margin="0" Height="75" Width="75"  Opacity="0.8"/>
+                                    <Image
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Source="{Binding ElementName=AvatarImage, Path=ImageSource}"
+                                        Stretch="Fill"
+                                        StretchDirection="Both">
+                                        <Image.OpacityMask>
+                                            <VisualBrush Visual="{Binding ElementName=Border1}" />
+                                        </Image.OpacityMask>
+                                    </Image>
+                                    <wpfui:Button
+                                        Width="75"
+                                        Height="75"
+                                        Margin="0"
+                                        Appearance="Transparent"
+                                        Click="Button_Click"
+                                        Opacity="0.8"
+                                        Style="{DynamicResource MaterialDesignIconButton}" />
                                 </Grid>
-                            </materialDesign:Card>
-                            <Border   BorderThickness="1" IsHitTestVisible="False" BorderBrush="#353535" CornerRadius="50"  Height="75" Width="75">
+                            </Border>
+                            <Border
+                                Width="75"
+                                Height="75"
+                                BorderBrush="#353535"
+                                BorderThickness="1"
+                                CornerRadius="50"
+                                IsHitTestVisible="False">
                                 <Border.Background>
-                                    <ImageBrush x:Name="AvatarImage"     />
+                                    <ImageBrush x:Name="AvatarImage" />
                                 </Border.Background>
                             </Border>
 
                         </Grid>
-                        <wpfui:TextBox Padding="10 8 0 8" Width="160"  Opacity="1" BorderThickness="0" materialDesign:HintAssist.Hint="Username" x:Name="UsernameTB" GotFocus="UsernameTB_GotFocus" VerticalAlignment="Bottom" materialDesign:HintAssist.IsFloating="False"  FontSize="16"    Margin="8" TextChanged="UsernameTB_TextChanged"/>
+                        <wpfui:TextBox
+                            x:Name="UsernameTB"
+                            Height="36"
+                            Margin="24,8"
+                            Padding="10,8,0,8"
+                            VerticalAlignment="Bottom"
+                            materialDesign:HintAssist.Hint="Username"
+                            materialDesign:HintAssist.IsFloating="False"
+                            BorderThickness="0"
+                            FontSize="16"
+                            GotFocus="UsernameTB_GotFocus"
+                            Opacity="1"
+                            PlaceholderText="Username"
+                            TextChanged="UsernameTB_TextChanged" />
                     </StackPanel>
-                    <Separator Style="{DynamicResource MaterialDesignDarkSeparator}" Margin="16 0"/>
-                    <ComboBox Visibility="Collapsed" Name="SeverComboBox" Margin="16 8" Style="{DynamicResource MaterialDesignFilledComboBox}"  >
-                        <ComboBoxItem Content="Server1"  Style="{DynamicResource MaterialDesignToolToggleListBoxItem}" IsSelected="True" />
-                        <ComboBoxItem Content="Server2"  Style="{DynamicResource MaterialDesignToolToggleListBoxItem}"/>
-                        <ComboBoxItem Content="Server3"  Style="{DynamicResource MaterialDesignToolToggleListBoxItem}"/>
+                    <Separator Margin="16,0" Style="{DynamicResource MaterialDesignDarkSeparator}" />
+                    <ComboBox
+                        Name="SeverComboBox"
+                        Margin="16,8"
+                        Style="{DynamicResource MaterialDesignFilledComboBox}"
+                        Visibility="Collapsed">
+                        <ComboBoxItem
+                            Content="Server1"
+                            IsSelected="True"
+                            Style="{DynamicResource MaterialDesignToolToggleListBoxItem}" />
+                        <ComboBoxItem Content="Server2" Style="{DynamicResource MaterialDesignToolToggleListBoxItem}" />
+                        <ComboBoxItem Content="Server3" Style="{DynamicResource MaterialDesignToolToggleListBoxItem}" />
                     </ComboBox>
 
-                    <StackPanel x:Name="ChoosingPanel"  Orientation="Horizontal"  Margin="8">
-                        <RadioButton Name="Host" Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Margin="8" IsChecked="True"
-                            Content="HOST" Checked="Host_Checked_1" />
-                        <RadioButton x:Name="JoinBtn" Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Margin="8" IsChecked="False"
-                        Content="CONNECT" Checked="Connect_Checked" />
+                    <StackPanel
+                        x:Name="ChoosingPanel"
+                        Margin="8"
+                        Orientation="Horizontal">
+                        <RadioButton
+                            Name="Host"
+                            Margin="8"
+                            Checked="Host_Checked_1"
+                            Content="HOST"
+                            IsChecked="True"
+                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
+                        <RadioButton
+                            x:Name="JoinBtn"
+                            Margin="8"
+                            Checked="Connect_Checked"
+                            Content="CONNECT"
+                            IsChecked="False"
+                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
 
                     </StackPanel>
-                    <TextBox x:Name="RoomName" Margin=" 16 8" IsEnabled="False" materialDesign:HintAssist.Hint="Room Name" Cursor="IBeam"/>
-                    <Button  Margin="16 8" Height="36" Background="{DynamicResource MyAccentColor}"
-                        x:Name="StartBtn" Content="Create room" Style="{DynamicResource MaterialDesignFlatButton}" Cursor="Hand" Click="StartBtn_Click"/>
-                    <Button x:Name="SaveBtn" Visibility="Collapsed" Content="Save" Margin="16 8" Style="{DynamicResource MaterialDesignFlatButton}"/>
+                    <wpfui:TextBox
+                        x:Name="RoomName"
+                        Margin="16,8"
+                        materialDesign:HintAssist.Hint="Room Name"
+                        Cursor="IBeam"
+                        IsEnabled="False"
+                        PlaceholderText="Room name" />
+                    <Button
+                        x:Name="StartBtn"
+                        Height="36"
+                        Margin="16,8"
+                        Background="{DynamicResource MyAccentColor}"
+                        Click="StartBtn_Click"
+                        Content="Create room"
+                        Cursor="Hand"
+                        Style="{DynamicResource MaterialDesignFlatButton}" />
+                    <Button
+                        x:Name="SaveBtn"
+                        Margin="16,8"
+                        Content="Save"
+                        Style="{DynamicResource MaterialDesignFlatButton}"
+                        Visibility="Collapsed" />
                 </StackPanel>
             </Grid>
         </wpfui:Badge>
-        <wpfui:Badge  x:Name="LoginHeader" VerticalAlignment="Top" Width="300" Margin="0 -10 0 0" MinHeight="58" Background="{DynamicResource PrymaryHeaderColor}" materialDesign:ShadowAssist.ShadowDepth="Depth2"  materialDesign:ShadowAssist.ShadowEdges="Bottom" >
-            <!--Foreground="{DynamicResource IdealForegroundColorBrush}"-->
-            <TextBlock Width="300" VerticalAlignment="Center" HorizontalAlignment="Left" Margin=" 20 4 16 4" Text="Login" FontWeight="DemiBold" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+        <wpfui:Badge
+            x:Name="LoginHeader"
+            Width="300"
+            MinHeight="58"
+            Margin="0,-10,0,0"
+            VerticalAlignment="Top"
+            materialDesign:ShadowAssist.ShadowDepth="Depth2"
+            materialDesign:ShadowAssist.ShadowEdges="Bottom"
+            Background="{DynamicResource PrymaryHeaderColor}">
+            <!--  Foreground="{DynamicResource IdealForegroundColorBrush}"  -->
+            <TextBlock
+                Width="300"
+                Margin="20,4,16,4"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontWeight="DemiBold"
+                Style="{DynamicResource MaterialDesignBody1TextBlock}"
+                Text="Login" />
         </wpfui:Badge>
 
     </Grid>

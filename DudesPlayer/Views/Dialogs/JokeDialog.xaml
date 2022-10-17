@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:DudesPlayer.Views.SideBar.Dialogs"
              mc:Ignorable="d" Background="{DynamicResource PrymaryBackgroundColor}"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+             xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
              >
-    <wpfui:Card  Padding="0">
+    <wpfui:Card  Focusable="False" Padding="0">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="64" />
@@ -18,8 +18,8 @@
           
             <Grid Grid.Row="1" Margin="24">
                 <StackPanel>
-                    <wpfui:TextBox Placeholder="Setup" TextWrapping="Wrap" AcceptsReturn="True" x:Name="Setup"  materialDesign:HintAssist.Hint="Setup"  materialDesign:HintAssist.IsFloating="False"  Margin="0 8"/>
-                    <wpfui:TextBox Placeholder="Punchline" TextWrapping="Wrap" AcceptsReturn="True" x:Name="Punchline" materialDesign:HintAssist.Hint="Punchline"  materialDesign:HintAssist.IsFloating="False"  Margin="0 8"/>
+                    <wpfui:TextBox PlaceholderText="Setup" TextWrapping="Wrap" AcceptsReturn="True" x:Name="Setup"  materialDesign:HintAssist.Hint="Setup"  materialDesign:HintAssist.IsFloating="False"  Margin="0 8"/>
+                    <wpfui:TextBox PlaceholderText="Punchline" TextWrapping="Wrap" AcceptsReturn="True" x:Name="Punchline" materialDesign:HintAssist.Hint="Punchline"  materialDesign:HintAssist.IsFloating="False"  Margin="0 8"/>
                 </StackPanel>
             </Grid>
             <wpfui:Card Grid.Row="2" VerticalAlignment="Bottom" Padding="4    ">

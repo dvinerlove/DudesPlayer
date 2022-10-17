@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DudesPlayer.Views"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
               Width="500"   >
-    <wpfui:Card Padding="0  ">
+    <wpfui:Card Focusable="False" Padding="0  ">
         <Grid  >
             <wpfui:Card Height="64"  VerticalAlignment="Top" Padding="24 0">
                 <TextBlock Text="Choose Vlc Directory" Margin="24 16" FontWeight="DemiBold" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>

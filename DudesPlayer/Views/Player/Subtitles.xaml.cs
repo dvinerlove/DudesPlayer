@@ -1,5 +1,5 @@
-﻿using ClassLibrary;
-using ClassLibrary.Models;
+﻿using DudesPlayer.Library;
+using DudesPlayer.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

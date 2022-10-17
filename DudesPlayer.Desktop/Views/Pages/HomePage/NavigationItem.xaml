@@ -1,0 +1,40 @@
+﻿<UserControl
+    x:Class="DudesPlayer.Desktop.Views.Pages.HomePage.NavigationItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DudesPlayer.Desktop.Views.Pages.HomePage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Margin="0,0,0,4"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    mc:Ignorable="d">
+    <Grid>
+        <ui:Button
+            Width="64"
+            Height="64  "
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Appearance="Transparent"
+            BorderBrush="Transparent"
+            BorderThickness="0"
+            Click="Button_Click"
+            ToolTip="{Binding Text}">
+            <StackPanel VerticalAlignment="Center">
+                <ui:SymbolIcon
+                    Margin="0,4,0,0"
+                    VerticalAlignment="Center"
+                    Filled="{Binding IsChecked}"
+                    FontSize="28"
+                    Foreground="{Binding SelectedColorBrush}"
+                    Symbol="{Binding Symbol}" />
+                <TextBlock
+                    x:Name="TextBlock1"
+                    VerticalAlignment="Center"
+                    FontSize="11"
+                    Foreground="{Binding SelectedColorBrush}"
+                    Text="{Binding Text}" />
+            </StackPanel>
+        </ui:Button>
+    </Grid>
+</UserControl>

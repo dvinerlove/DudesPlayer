@@ -1,23 +1,40 @@
-﻿<UserControl x:Class="DudesPlayer.Views.SideBar.UserItem"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DudesPlayer.Views.SideBar"
-             mc:Ignorable="d" MinWidth="160" Height="62" Margin="0 0 -8 0"
-             >
-    <Grid Height="62">
-        <StackPanel  Orientation="Horizontal" Margin="0 4">
-            <Border Margin="8 4" CornerRadius="50"  Height="38" Width="38">
+﻿<UserControl
+    x:Class="DudesPlayer.Views.SideBar.UserItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DudesPlayer.Views.SideBar"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Height="62"
+    MinWidth="160"
+    Margin="0,0,-8,0"
+    Focusable="False"
+    mc:Ignorable="d">
+    <Grid Height="62" Focusable="False">
+        <StackPanel Margin="0,4" Orientation="Horizontal">
+            <Border
+                Width="38"
+                Height="38"
+                Margin="8,4"
+                CornerRadius="50">
                 <Border.Background>
-                    <ImageBrush x:Name="UserImage"  ImageSource="/Avatars/13.jpg"  />
+                    <ImageBrush x:Name="UserImage" ImageSource="/Avatars/13.jpg" />
                 </Border.Background>
             </Border>
-            <TextBlock FontSize="17"  Opacity="1" x:Name="UserNameTB" Margin="8 8 0 0" VerticalAlignment="Center" FontWeight="Medium" Text="лох" />
+            <TextBlock
+                x:Name="UserNameTB"
+                Margin="8,8,0,0"
+                VerticalAlignment="Center"
+                FontSize="17"
+                FontWeight="Medium"
+                Opacity="1"
+                Text="лох" />
         </StackPanel>
-        <Button  Style="{DynamicResource PanelButton}"  Margin="0,4,16,4" Cursor="Hand">
-            
-        </Button>
-        
+        <Button
+            Margin="0,4,16,4"
+            Cursor="Hand"
+            Focusable="False"
+            Style="{DynamicResource PanelButton}" />
+
     </Grid>
 </UserControl>

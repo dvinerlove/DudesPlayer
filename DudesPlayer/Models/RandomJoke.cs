@@ -1,4 +1,4 @@
-﻿using ClassLibrary.Models;
+﻿using DudesPlayer.Library.Models;
 using Newtonsoft.Json;
 using RestSharp;
 using System;

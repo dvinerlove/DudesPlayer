@@ -1,0 +1,74 @@
+﻿<UserControl
+    x:Class="DudesPlayer.Desktop.Views.Pages.FriendsPage.UserItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DudesPlayer.Desktop.Views.Pages.FriendsPage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    mc:Ignorable="d">
+    <Grid>
+        <ui:Button
+            Margin="0"
+            Padding="8,8    "
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            Background="{StaticResource HeaderBrushPrimary}"
+            BorderThickness="0">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Border
+                            Width="40"
+                            Height="40"
+                            Background="Black"
+                            CornerRadius="90" />
+                        <Border
+                            Width="16"
+                            Height="16"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Background="{StaticResource PaletteGreenBrush}"
+                            BorderBrush="{StaticResource HeaderBrushPrimary}"
+                            BorderThickness="3"
+                            CornerRadius="90" />
+                    </Grid>
+                    <StackPanel Margin="8,0" VerticalAlignment="Center">
+                        <TextBlock FontWeight="DemiBold" Text="%USERNAME%" />
+                        <StackPanel Orientation="Horizontal">
+                            <Label
+                                Margin="0"
+                                Content="now wathcing "
+                                FontSize="12" />
+                            <Label
+                                Margin="0"
+                                Content="'gay anime'"
+                                FontSize="12" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <ui:Button
+                    Margin="8,0,0,0"
+                    HorizontalAlignment="Right"
+                    Appearance="Danger"
+                    DockPanel.Dock="Right"
+                    Icon="Delete24"
+                    ToolTip="Delete" />
+                <ui:Button
+                    Margin="8,0,0,0"
+                    HorizontalAlignment="Right"
+                    Appearance="Transparent"
+                    DockPanel.Dock="Right"
+                    Icon="Chat24"
+                    ToolTip="Chat" />
+                <ui:Button
+                    Margin="8,0,0,0"
+                    HorizontalAlignment="Right"
+                    Appearance="Transparent"
+                    DockPanel.Dock="Right"
+                    Icon="Play24"
+                    ToolTip="Join" />
+            </DockPanel>
+        </ui:Button>
+    </Grid>
+</UserControl>

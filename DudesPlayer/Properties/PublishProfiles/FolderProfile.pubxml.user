@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
-https://go.microsoft.com/fwlink/?LinkID=208121. 
+https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project>
   <PropertyGroup>
-    <History>True|2022-04-10T20:54:24.9999114Z;True|2022-03-21T00:57:14.6537824+03:00;</History>
+    <History>True|2022-09-28T23:11:40.3297621Z;True|2022-09-29T01:50:14.6976508+03:00;False|2022-09-29T01:49:26.0312645+03:00;</History>
+    <LastFailureDetails />
   </PropertyGroup>
 </Project>

@@ -1,7 +1,7 @@
-﻿using ClassLibrary.Models;
+﻿using DudesPlayer.Library.Models;
 using Newtonsoft.Json;
 
-namespace ClassLibrary.Models
+namespace DudesPlayer.Library.Models
 {
     public enum RoomState
     {
@@ -24,9 +24,9 @@ namespace ClassLibrary.Models
             try
             {
                 return settings.CurrentURL == CurrentURL &&
-               settings.Speed == Speed &&
-               settings.State == State &&
-               settings.CurrentTime == CurrentTime;
+                       settings.Speed == Speed &&
+                       settings.State == State &&
+                       settings.CurrentTime == CurrentTime;
             }
             catch
             {
@@ -37,8 +37,9 @@ namespace ClassLibrary.Models
 
     public enum URLType
     {
-        link,
-        youtube
+        Link,
+        Youtube,
+        Google
     }
     public class URLModel
     {
@@ -47,7 +48,7 @@ namespace ClassLibrary.Models
         public string? Url { get; set; }
         public string? Name { get; set; }
         public string? YTSource { get; set; }
-        public URLType URLType { get; set; } = URLType.link;
+        public URLType URLType { get; set; } = URLType.Link;
 
         public string GetTitle()
         {
@@ -69,7 +70,6 @@ namespace ClassLibrary.Models
         public List<URLModel>? URLs { get; set; }
         public string? UsersJson { get; set; }
         public RoomSettings? Settings { get; set; }
-
 
         public List<UserModel> GetUsers()
         {

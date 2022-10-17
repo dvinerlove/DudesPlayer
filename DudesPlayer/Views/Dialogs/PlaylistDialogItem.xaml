@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DudesPlayer.Views.Dialogs"
              mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
-            Width="517" MaxHeight="90"  >
-    <wpfui:Card Margin="8 8 16 8"  >
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+            Width="auto" MaxHeight="100"  >
+    <wpfui:Card Focusable="False" Margin="8 8 16 8"  >
         <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

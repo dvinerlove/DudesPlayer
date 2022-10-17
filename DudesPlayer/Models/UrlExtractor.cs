@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+﻿using DudesPlayer.Library;
 using DotNetTools.SharpGrabber;
 using DotNetTools.SharpGrabber.Grabbed;
 using DudesPlayer.Models;
@@ -17,13 +17,13 @@ namespace DudesPlayer.Models
         {
             return GrabberBuilder.New()
             .UseDefaultServices()
-            .AddYouTube().AddVimeo()
+            .AddYouTube().AddVimeo().AddHls()
             .Build();
         }
         public static Uri GetVideo(string url, string quality)
         {
             IMultiGrabber grabber = GetGrabber();
-
+             
             var result = grabber.GrabAsync(new Uri(url));
 
             GrabbedMedia item = result.Result.Resources<GrabbedMedia>()
@@ -48,9 +48,7 @@ namespace DudesPlayer.Models
             IMultiGrabber grabber = GetGrabber();
 
             var result = grabber.GrabAsync(new Uri(url));
-
-            
-
+             
             int bitrate = 0;
             GrabbedMedia media= new GrabbedMedia();
             foreach (var item in result.Result.Resources<GrabbedMedia>()

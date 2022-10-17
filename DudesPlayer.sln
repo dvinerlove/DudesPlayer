@@ -5,11 +5,13 @@ VisualStudioVersion = 17.0.31815.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DudesPlayer", "DudesPlayer\DudesPlayer.csproj", "{2D793929-7420-4760-BF0D-7024FDFEDB6C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspWebServer", "AspWebServer\AspWebServer.csproj", "{B768F81B-334F-420D-BE9B-E6DA060F7DED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DudesPlayer.Library", "ClassLibrary\DudesPlayer.Library.csproj", "{77A33069-8E09-4A35-82A1-32B4FB394F0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{77A33069-8E09-4A35-82A1-32B4FB394F0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DudesPlayer.Api", "DudesPlayer.Api\DudesPlayer.Api.csproj", "{AC5C3A22-C51D-4D10-BC2D-E361207EE6B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Installer", "Installer\Installer.csproj", "{9CD17844-5DC2-45B1-AD11-033F6B7D2E8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DudesPlayer.Desktop", "DudesPlayer.Desktop\DudesPlayer.Desktop.csproj", "{4A3B54A0-359F-4413-A157-9200E46C5E06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiDesktopApp1", "UiDesktopApp1\UiDesktopApp1.csproj", "{284EA817-60DA-4515-BE8B-FCC31BD488EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +23,22 @@ Global
 		{2D793929-7420-4760-BF0D-7024FDFEDB6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D793929-7420-4760-BF0D-7024FDFEDB6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D793929-7420-4760-BF0D-7024FDFEDB6C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B768F81B-334F-420D-BE9B-E6DA060F7DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B768F81B-334F-420D-BE9B-E6DA060F7DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B768F81B-334F-420D-BE9B-E6DA060F7DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B768F81B-334F-420D-BE9B-E6DA060F7DED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{77A33069-8E09-4A35-82A1-32B4FB394F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{77A33069-8E09-4A35-82A1-32B4FB394F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77A33069-8E09-4A35-82A1-32B4FB394F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77A33069-8E09-4A35-82A1-32B4FB394F0B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CD17844-5DC2-45B1-AD11-033F6B7D2E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CD17844-5DC2-45B1-AD11-033F6B7D2E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CD17844-5DC2-45B1-AD11-033F6B7D2E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CD17844-5DC2-45B1-AD11-033F6B7D2E8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC5C3A22-C51D-4D10-BC2D-E361207EE6B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC5C3A22-C51D-4D10-BC2D-E361207EE6B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC5C3A22-C51D-4D10-BC2D-E361207EE6B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC5C3A22-C51D-4D10-BC2D-E361207EE6B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A3B54A0-359F-4413-A157-9200E46C5E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3B54A0-359F-4413-A157-9200E46C5E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3B54A0-359F-4413-A157-9200E46C5E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3B54A0-359F-4413-A157-9200E46C5E06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{284EA817-60DA-4515-BE8B-FCC31BD488EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284EA817-60DA-4515-BE8B-FCC31BD488EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284EA817-60DA-4515-BE8B-FCC31BD488EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284EA817-60DA-4515-BE8B-FCC31BD488EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

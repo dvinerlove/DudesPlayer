@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace ClassLibrary
+namespace DudesPlayer.Library
 {
     public static class VDebug
     {

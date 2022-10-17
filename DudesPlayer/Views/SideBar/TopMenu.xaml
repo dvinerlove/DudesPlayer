@@ -1,0 +1,61 @@
+﻿<UserControl
+    x:Class="DudesPlayer.Views.SideBar.TopMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DudesPlayer.Views.SideBar"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid
+        Height="48"
+        Background="{StaticResource PrymaryHeaderColor}"
+        DockPanel.Dock="Top">
+        <StackPanel
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                Height="36"
+                Margin="16,0,0,0"
+                Click="Chat_Click"
+                Focusable="False"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                ToolTip="Chat">
+                <materialDesign:PackIcon
+                    Width="26"
+                    Height="24"
+                    Kind="Chat" />
+            </Button>
+
+            <Button
+                Height="36"
+                Margin="16,0,0,0"
+                Click="Playlist_Click"
+                Focusable="False"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                ToolTip="Playlist" Cursor="Hand">
+                <materialDesign:PackIcon
+                    Width="26"
+                    Height="24"
+                    Kind="Queue" />
+            </Button>
+
+            <Button
+                Height="36"
+                Margin="16,0,0,0"
+                Focusable="False"
+                IsEnabled="False"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                ToolTip="Share">
+                <materialDesign:PackIcon
+                    Width="26"
+                    Height="24"
+                    Kind="ShareVariant" />
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

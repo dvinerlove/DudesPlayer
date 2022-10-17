@@ -1,5 +1,5 @@
-﻿using ClassLibrary;
-using ClassLibrary.Models;
+﻿using DudesPlayer.Library;
+using DudesPlayer.Library.Models;
 using DudesPlayer.Classes;
 using DudesPlayer.Models;
 using RandomFriendlyNameGenerator;
@@ -155,7 +155,6 @@ namespace DudesPlayer.Views.SideBar
                     {
                         if (ClientData.Client.CreateRoom())
                         {
-                            //ClientData.Client.GetRoom() = ClientData.Client.GetRoom();
                             ClientData.CurrentUser.RoomName = ClientData.Client.GetRoom().Name;
 
                             isConnected = ClientData.Client.Login();
@@ -171,12 +170,12 @@ namespace DudesPlayer.Views.SideBar
                         ClientData.SseController.Run();
                         if (ClientData.SocketClient == null)
                         {
-                            ClientData.SocketClient = new SocketClient();
+                            ClientData.SocketClient = new SignalRClient();
                         }
                         else
                         {
                             ClientData.SocketClient.Stop();
-                            ClientData.SocketClient = new SocketClient();
+                            ClientData.SocketClient = new SignalRClient();
                         }
                         ClientData.SocketClient.Start();
                     }

@@ -1,4 +1,5 @@
-﻿using ClassLibrary;
+﻿using DudesPlayer.Library;
+using DudesPlayer.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +40,11 @@ namespace DudesPlayer.Views.Fun.Chat
             {
                 Dispatcher.Invoke(() =>
                 {
+                    if (user != ClientData.CurrentUser.Username)
+                    {
+
+                    }
                     ChatItem chatItem = new ChatItem(user, message);
-                    VDebug.WriteLine(Visibility);
                     ChatGrid.Children.Clear();
                     ChatGrid.Children.Add(chatItem);
                     chatItem.Hide();

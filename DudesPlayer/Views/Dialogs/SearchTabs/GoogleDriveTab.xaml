@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="DudesPlayer.Views.Dialogs.SearchTabs.GoogleDriveTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DudesPlayer.Views.Dialogs.SearchTabs"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+           >
+        <wpfui:ClientAreaBorder Padding="0" Margin="0 0 8 0" BorderThickness="0" Background="{Binding ElementName=Item, Path=Background}" BorderBrush="{Binding ElementName=Item, Path=Background}">
+            <DockPanel>
+                <StackPanel  DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <WrapPanel>
+                    <wpfui:TextBox PlaceholderText="Share link or file id" VerticalAlignment="Top" Width="400"  Height="36" x:Name="TextBox1" TextChanged="TextBox1_TextChanged" Margin="8 8 0 0 " />
+                        <wpfui:Button Appearance="Transparent" Name="SearchBtn" Height="36" Content="Search" Margin="8 8 0 0 "  Click="Search"/>
+                    </WrapPanel>
+                    <wpfui:DynamicScrollViewer Grid.Row="1" >
+                    <VirtualizingStackPanel Name="SearchSP"/>
+                    </wpfui:DynamicScrollViewer>
+                </StackPanel>
+                <!--<wpfui:Button Height="36" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Right" Appearance="Secondary" Content="CLOSE" Margin="0 0 0 8" Click="Close"/>-->
+            </DockPanel>
+        </wpfui:ClientAreaBorder>
+
+</UserControl>

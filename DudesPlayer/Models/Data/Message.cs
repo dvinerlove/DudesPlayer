@@ -1,5 +1,5 @@
-﻿using ClassLibrary.Models;
-using ClassLibrary;
+﻿using DudesPlayer.Library.Models;
+using DudesPlayer.Library;
 
 namespace DudesPlayer.Classes.Data
 {

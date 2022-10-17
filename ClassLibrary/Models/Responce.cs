@@ -1,6 +1,6 @@
-﻿using ClassLibrary.Models;
+﻿using DudesPlayer.Library.Models;
 
-namespace ClassLibrary.Models
+namespace DudesPlayer.Library.Models
 {
     public class Responce
     {

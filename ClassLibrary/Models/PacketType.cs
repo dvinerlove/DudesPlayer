@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Models
+namespace DudesPlayer.Library.Models
 {
     public enum PacketType
     {

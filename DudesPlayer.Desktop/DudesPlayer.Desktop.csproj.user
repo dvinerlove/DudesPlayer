@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\Container.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Controls\ModalWindowDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Controls\TitleBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\FriendsPage\FriendsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\FriendsPage\UserItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\HomePage\HomePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\HomePage\NavigationControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\HomePage\NavigationItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\LoginPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\PlayerPage\PlayerControls.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\PlayerPage\PlayerControlsBackground.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\PlayerPage\PlayerHeaderControls.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\PlayerPage\PlayerPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\PlayerPage\PlayerVideoTitle.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\PlayerPage\PlaylistTab\PlaylistTab.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\PlayerPage\PlaylistTab\SearchItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\RoomsExplorerPage\Dialogs\ConnectToRoomDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\RoomsExplorerPage\NewRoomButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\RoomsExplorerPage\Dialogs\NewRoomDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\RoomsExplorerPage\RoomItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\RoomsExplorerPage\RoomsExplorerPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Resources\Palette.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Slider.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Container.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\ModalWindowDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\TitleBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\FriendsPage\FriendsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\FriendsPage\UserItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\HomePage\HomePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\HomePage\NavigationControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\HomePage\NavigationItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\PlayerPage\PlayerControls.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\PlayerPage\PlayerControlsBackground.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\PlayerPage\PlayerHeaderControls.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\PlayerPage\PlayerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\PlayerPage\PlayerVideoTitle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\PlayerPage\PlaylistTab\PlaylistTab.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\PlayerPage\PlaylistTab\SearchItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\RoomsExplorerPage\Dialogs\ConnectToRoomDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\RoomsExplorerPage\NewRoomButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\RoomsExplorerPage\Dialogs\NewRoomDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\RoomsExplorerPage\RoomItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\RoomsExplorerPage\RoomsExplorerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

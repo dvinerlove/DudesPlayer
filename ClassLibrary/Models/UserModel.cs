@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
 
-namespace ClassLibrary.Models
+namespace DudesPlayer.Library.Models
 {
     public class UserModel
     {

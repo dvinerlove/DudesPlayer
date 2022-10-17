@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using ClassLibrary;
-using ClassLibrary.Models;
+using DudesPlayer.Library;
+using DudesPlayer.Library.Models;
 
-namespace ClassLibrary
+namespace DudesPlayer.Library
 {
     public static class ClientCommandHandler
     {

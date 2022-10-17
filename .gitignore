@@ -7,6 +7,11 @@
 /DudesPlayer/bin
 /.vs
 /obj
+*/obj
+*/bin
+*.vs
+*obj
+*bin
 /bin
 /obj/Debug/net6.0-windows
 /AspWebServer/bin

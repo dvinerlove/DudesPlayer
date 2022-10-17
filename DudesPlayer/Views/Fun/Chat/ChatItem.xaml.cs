@@ -1,5 +1,5 @@
-﻿using ClassLibrary;
-using ClassLibrary.Models;
+﻿using DudesPlayer.Library;
+using DudesPlayer.Library.Models;
 using DudesPlayer.Classes;
 using System;
 using System.Collections.Generic;
@@ -27,10 +27,13 @@ namespace DudesPlayer.Views.Fun.Chat
         public ChatItem()
         {
             InitializeComponent();
+
         }
 
         public void Hide()
         {
+            Visibility = Visibility.Visible;
+
             var animation = new DoubleAnimation
             {
                 To = 0,
@@ -39,7 +42,10 @@ namespace DudesPlayer.Views.Fun.Chat
                 FillBehavior = FillBehavior.Stop
             };
 
-            animation.Completed += (s, a) => this.Opacity = 0;
+            animation.Completed += (s, a) => {
+                this.Opacity = 0;
+                Visibility = Visibility.Collapsed;
+                };
 
             this.BeginAnimation(UIElement.OpacityProperty, animation);
         }

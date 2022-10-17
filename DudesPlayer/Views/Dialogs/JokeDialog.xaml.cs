@@ -1,4 +1,4 @@
-﻿using ClassLibrary.Models;
+﻿using DudesPlayer.Library.Models;
 using DudesPlayer.Classes;
 using DudesPlayer.Classes;
 using DudesPlayer.Models;

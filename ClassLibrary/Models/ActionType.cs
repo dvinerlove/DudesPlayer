@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary.Models
+﻿namespace DudesPlayer.Library.Models
 {
     public enum ActionType
     {

@@ -1,5 +1,5 @@
-﻿using ClassLibrary;
-using ClassLibrary.Models;
+﻿using DudesPlayer.Library;
+using DudesPlayer.Library.Models;
 using DudesPlayer.Classes;
 using DudesPlayer.Models;
 using DudesPlayer.Views.Fun.Chat;
@@ -37,7 +37,6 @@ namespace DudesPlayer.Views.Player
         {
             InitializeComponent();
 
-
             SubsTB.Text = Properties.Settings.Default.SubsDirectory;
 
             ClientCommandHandler.Update += (ss, ee) =>
@@ -56,8 +55,6 @@ namespace DudesPlayer.Views.Player
             ClientCommandHandler.Joke += Joke;
             Unloaded += MainWindow_Unloaded;
         }
-
-
 
         private void ClientCommandHandler_Shake(object sender, EventArgs e)
         {
@@ -181,7 +178,6 @@ namespace DudesPlayer.Views.Player
                         {
                             this.audioProvider = new VlcVideoSourceProvider(this.Dispatcher);
                         }
-
                     }
                     catch (Exception ex)
                     {
@@ -255,8 +251,7 @@ namespace DudesPlayer.Views.Player
                     {
                         if (currentURL != null && string.IsNullOrEmpty(currentURL.Url) == false)
                         {
-
-                            if (currentURL.URLType != URLType.link)
+                            if (currentURL.URLType != URLType.Link)
                             {
                                 audioProvider.MediaPlayer.Play();
                             }
@@ -322,19 +317,23 @@ namespace DudesPlayer.Views.Player
                 QualityCB.Items.Clear();
                 Title.Text = currentURL.GetTitle();
                 Subtitles.Load(currentURL);
-
+                audioProvider.MediaPlayer.SetMedia("");
                 switch (currentURL.URLType)
                 {
-                    case URLType.link:
+                    case URLType.Link:
                         if (QualityCB.Visibility != Visibility.Collapsed)
                         {
                             QualityCB.Visibility = Visibility.Collapsed;
                         }
                         SetVideo(currentURL.Url);
                         break;
-                    case URLType.youtube:
+                    case URLType.Youtube:
                         QualityCB.Visibility = Visibility.Visible;
                         SetYouTubeVideo(currentURL.Url);
+                        break;
+                    case URLType.Google:
+                        QualityCB.Visibility = Visibility.Collapsed;
+                        SetVideo(currentURL.Url);
                         break;
                     default:
                         break;
@@ -352,9 +351,6 @@ namespace DudesPlayer.Views.Player
                     var manifest = await youtube.Videos.Streams.GetManifestAsync(url);
 
                     var streams = manifest.GetVideoOnlyStreams();
-
-                    //UrlExtractor.GetVideo(currentURL.Url, quality);
-                    //UrlExtractor.GetAudio(currentURL.Url);
 
                     Dispatcher.Invoke(() =>
                     {
@@ -397,9 +393,6 @@ namespace DudesPlayer.Views.Player
                         SetVideo(videoStream.Url, audioStream.Url);
                     });
                 });
-
-
-
             }
             catch (Exception ex)
             {
@@ -407,8 +400,39 @@ namespace DudesPlayer.Views.Player
             }
         }
 
+        internal void VulumeDown()
+        {
+            if (VolumeSlider.Value - 5 >= 0)
+            {
+                VolumeSlider.Value -= 5;
+            }
+            MouseEnter();
+        }
+
+        internal void VulumeUp()
+        {
+            if (VolumeSlider.Value + 5 <= 100)
+            {
+                VolumeSlider.Value += 5;
+            }
+            MouseEnter();
+        }
+
+        private new void MouseEnter()
+        {
+            ControlPanelGrid.Visibility = Visibility.Visible;
+            _timer.Interval = TimeSpan.FromSeconds(2);
+            _timer.Tick -= _timer_Tick;
+            _timer.Tick += _timer_Tick;
+            Cursor = Cursors.Arrow;
+            _timer.Start();
+        }
+
+
+
         private async void SetVideo(string url, string audioUrl = null)
         {
+
 
             List<string> options = new List<string>()
                     {
@@ -429,7 +453,10 @@ namespace DudesPlayer.Views.Player
                 {
                     await Task.Delay(100);
                 }
+                //await Task.Delay(1000);
+
                 sourceProvider.MediaPlayer.SetMedia(new Uri(url), options.ToArray());
+                //sourceProvider.MediaPlayer.SetMedia(new Uri(url), options.ToArray());
 
                 if (string.IsNullOrEmpty(audioUrl) == false)
                 {
@@ -481,19 +508,29 @@ namespace DudesPlayer.Views.Player
             }
 
             string subFile = Properties.Settings.Default.SubsDirectory + @"\" + Title.Text.Substring(0, Title.Text.Length - 3) + "srt";
-
-            if (File.Exists(subFile) == false)
+            try
             {
-                File.Delete(subFile);
+                if (File.Exists(subFile) == false)
+                {
+                    File.Delete(subFile);
+                }
+
+                await ClientData.Client.TrySaveSubtitle(Title.Text.Substring(0, Title.Text.Length - 3), Properties.Settings.Default.SubsDirectory);
+
+            }
+            catch
+            {
+            }
+            finally
+            {
+                if (File.Exists(subFile))
+                {
+                    strings.Add(new string("--sub-file=" + subFile));
+                    strings.Add(new string("sub-file=" + subFile));
+                }
             }
 
-            await ClientData.Client.TrySaveSubtitle(Title.Text.Substring(0, Title.Text.Length - 3), Properties.Settings.Default.SubsDirectory);
 
-            if (File.Exists(subFile))
-            {
-                strings.Add(new string("--sub-file=" + subFile));
-                strings.Add(new string("sub-file=" + subFile));
-            }
             return strings;
         }
 
@@ -666,7 +703,7 @@ namespace DudesPlayer.Views.Player
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            VolumeSlider_DragCompleted(sender, new System.Windows.Controls.Primitives.DragCompletedEventArgs(0, 0, false));
         }
 
         DispatcherTimer _timer = new DispatcherTimer();
@@ -730,12 +767,8 @@ namespace DudesPlayer.Views.Player
 
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
-            ControlPanelGrid.Visibility = Visibility.Visible;
-            _timer.Interval = TimeSpan.FromSeconds(2);
-            _timer.Tick -= _timer_Tick;
-            _timer.Tick += _timer_Tick;
-            Cursor = Cursors.Arrow;
-            _timer.Start();
+            MouseEnter();
+
         }
 
         private void _timer_Tick(object sender, EventArgs e)
@@ -1022,7 +1055,7 @@ namespace DudesPlayer.Views.Player
             {
                 Dispatcher.Invoke(() =>
                 {
-                    if (currentURL != null && currentURL.URLType == URLType.youtube)
+                    if (currentURL != null && currentURL.URLType == URLType.Youtube)
                     {
                         ComboBoxItem boxItem = (ComboBoxItem)QualityCB.SelectedItem;
                         if (boxItem != null)
@@ -1048,6 +1081,16 @@ namespace DudesPlayer.Views.Player
             {
                 ChatAlertGrid.Visibility = Visibility.Visible;
             }
+        }
+
+        private void topMenu_ChatClick(object sender, EventArgs e)
+        {
+            ChatToggle();
+        }
+
+        private void topMenu_PlaylistClick(object sender, EventArgs e)
+        {
+            PlaylistToggle();
         }
     }
 

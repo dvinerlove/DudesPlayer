@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DudesPlayer.Views.RoomsBrowser"
              mc:Ignorable="d" 
              xmlns:md="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
-             xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+             xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
                 Margin="0 0 8 8" >
 
         <wpfui:CardAction   VerticalAlignment="Top" Click="CardAction_Click"  >

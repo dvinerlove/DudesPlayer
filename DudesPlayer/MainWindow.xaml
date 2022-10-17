@@ -1,180 +1,274 @@
-﻿<Window x:Class="DudesPlayer.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        KeyUp="MetroWindow_KeyUp" KeyDown="MetroWindow_KeyDown"
-        StateChanged="MetroWindow_StateChanged"     
-        MinWidth="450" MinHeight="300" Title="DudesPlayer (смотрим ржаку)"   
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"        
-        xmlns:mde="https://spiegelp.github.io/MaterialDesignExtensions/winfx/xaml"
-              xmlns:views="clr-namespace:DudesPlayer.Views" 
-              xmlns:player="clr-namespace:DudesPlayer.Views.Player"
-        mc:Ignorable="d" 
-        FontFamily="pack://application:,,,/;component/Fonts/#Segoe Fluent Icons"
-        xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
-        xmlns:wpfuiCommon="clr-namespace:WPFUI.Common;assembly=WPFUI"
-        Style="{StaticResource UiWindow}"
-        WindowStartupLocation="CenterScreen"
-        xmlns:local="clr-namespace:DudesPlayer" 
-        xmlns:roomsbrowser="clr-namespace:DudesPlayer.Views.RoomsBrowser">
-    <Grid >
+﻿<Window
+    x:Class="DudesPlayer.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DudesPlayer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mde="https://spiegelp.github.io/MaterialDesignExtensions/winfx/xaml"
+    xmlns:player="clr-namespace:DudesPlayer.Views.Player"
+    xmlns:roomsbrowser="clr-namespace:DudesPlayer.Views.RoomsBrowser"
+    xmlns:views="clr-namespace:DudesPlayer.Views"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="DudesPlayer (смотрим ржаку)"
+    MinWidth="450"
+    MinHeight="300"
+    FontFamily="pack://application:,,,/;component/Fonts/#Segoe Fluent Icons"
+    KeyDown="MetroWindow_KeyDown"
+    KeyUp="MetroWindow_KeyUp"
+    StateChanged="MetroWindow_StateChanged"
+    Style="{StaticResource UiWindow}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid Focusable="False">
         <Grid.RowDefinitions>
-            <RowDefinition x:Name="MainAppBar" Height="32"/>
-            <RowDefinition/>
+            <RowDefinition x:Name="MainAppBar" Height="24" />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Focusable="False"    Panel.ZIndex="999999" Background="{DynamicResource PrymaryHeaderColor}" MouseLeftButtonDown="Grid_MouseLeftButtonDown"  >
-
-            <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal" Panel.ZIndex="999">
-                <Button  Margin="1 0" Foreground="White" x:Name="btnMinimize" Content="&#xE949;"
-                Padding="0 1 1 0"
-                Click="btnMinimize_Click"
-                VerticalContentAlignment="Bottom"
-                DockPanel.Dock="Right"
-                WindowChrome.IsHitTestVisibleInChrome="True">
+        <Grid
+            VerticalAlignment="Center"
+            Panel.ZIndex="999999"
+            Background="{DynamicResource PrymaryHeaderColor}"
+            Focusable="False"
+            MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+            <TextBlock
+                Margin="8,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="14"
+                FontStretch="ExtraExpanded"
+                FontWeight="Bold"
+                Opacity="0.6"
+                Style="{DynamicResource MaterialDesignBody2TextBlock}"
+                Text="DudesPlayer" />
+            <StackPanel
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Panel.ZIndex="999"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="btnMinimize"
+                    Margin="1,0"
+                    Padding="1,1,1,0"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Bottom"
+                    Click="btnMinimize_Click"
+                    Content="&#xE949;"
+                    DockPanel.Dock="Right"
+                    Foreground="White"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Grid x:Name="LayoutRoot" Background="Transparent" Width="44" Height="30">
-                                <TextBlock x:Name="txt" Text="{TemplateBinding Content}"
-                                   FontFamily="Segoe MDL2 Assets"
-                                   FontSize="10" 
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   RenderOptions.ClearTypeHint="Auto"
-                                   TextOptions.TextRenderingMode="Aliased"
-                                   TextOptions.TextFormattingMode="Display"
-                                   Margin="{TemplateBinding Padding}"/>
+                            <Grid
+                                x:Name="LayoutRoot"
+                                Width="32"
+                                Height="24"
+                                Background="Transparent">
+                                <TextBlock
+                                    x:Name="txt"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    FontSize="10"
+                                    RenderOptions.ClearTypeHint="Auto"
+                                    Text="{TemplateBinding Content}"
+                                    TextOptions.TextFormattingMode="Display"
+                                    TextOptions.TextRenderingMode="Aliased" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#33E5E5E5"/>
-                                    <Setter TargetName="txt" Property="Foreground" Value="#fff"/>
+                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#33E5E5E5" />
+                                    <Setter TargetName="txt" Property="Foreground" Value="#fff" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <RibbonButton Margin="1 0" Foreground="White"  x:Name="btnMaximize" Content="&#xE922;"
-                Padding="0 1 1 0"
-                Click="btnMaximize_Click"
-                VerticalContentAlignment="Bottom"
-                DockPanel.Dock="Right"
-                WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand">
+                <RibbonButton
+                    x:Name="btnMaximize"
+                    Margin="1,0"
+                    Padding="1,1,1,0"
+                    VerticalContentAlignment="Bottom"
+                    Click="btnMaximize_Click"
+                    Content="&#xE922;"
+                    Cursor="Hand"
+                    DockPanel.Dock="Right"
+                    Foreground="White"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Grid x:Name="LayoutRoot" Background="Transparent" Width="44" Height="30">
-                                <TextBlock x:Name="txt" Text="{TemplateBinding Content}"
-                                   FontFamily="Segoe MDL2 Assets"
-                                   FontSize="10" 
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   RenderOptions.ClearTypeHint="Auto"
-                                   TextOptions.TextRenderingMode="Aliased"
-                                   TextOptions.TextFormattingMode="Display"
-                                   Margin="{TemplateBinding Padding}"/>
+                            <Grid
+                                x:Name="LayoutRoot"
+                                Width="32"
+                                Height="24"
+                                Background="Transparent">
+                                <TextBlock
+                                    x:Name="txt"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    FontSize="10"
+                                    RenderOptions.ClearTypeHint="Auto"
+                                    Text="{TemplateBinding Content}"
+                                    TextOptions.TextFormattingMode="Display"
+                                    TextOptions.TextRenderingMode="Aliased" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#33E5E5E5"/>
-                                    <Setter TargetName="txt" Property="Foreground" Value="#fff"/>
+                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#33E5E5E5" />
+                                    <Setter TargetName="txt" Property="Foreground" Value="#fff" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
                 </RibbonButton>
-                <Button Margin="1 0" Foreground="White"  x:Name="btnRestore" Content="&#xE923;" Visibility="Collapsed"
-                Padding="0 1 1 0"
-                Click="btnRestore_Click"
-                VerticalContentAlignment="Bottom"
-                DockPanel.Dock="Right"
-                WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand">
+                <Button
+                    x:Name="btnRestore"
+                    Margin="1,0"
+                    Padding="1,1,1,0"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Bottom"
+                    Click="btnRestore_Click"
+                    Content="&#xE923;"
+                    Cursor="Hand"
+                    DockPanel.Dock="Right"
+                    Foreground="White"
+                    Visibility="Collapsed"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Grid x:Name="LayoutRoot" Background="Transparent" Width="44" Height="30">
-                                <TextBlock x:Name="txt" Text="{TemplateBinding Content}"
-                                   FontFamily="Segoe MDL2 Assets"
-                                   FontSize="10" 
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   RenderOptions.ClearTypeHint="Auto"
-                                   TextOptions.TextRenderingMode="Aliased"
-                                   TextOptions.TextFormattingMode="Display"
-                                   Margin="{TemplateBinding Padding}"/>
+                            <Grid
+                                x:Name="LayoutRoot"
+                                Width="32"
+                                Height="24"
+                                Background="Transparent">
+                                <TextBlock
+                                    x:Name="txt"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    FontSize="10"
+                                    RenderOptions.ClearTypeHint="Auto"
+                                    Text="{TemplateBinding Content}"
+                                    TextOptions.TextFormattingMode="Display"
+                                    TextOptions.TextRenderingMode="Aliased" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#33E5E5E5"/>
-                                    <Setter TargetName="txt" Property="Foreground" Value="#fff"/>
+                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#33E5E5E5" />
+                                    <Setter TargetName="txt" Property="Foreground" Value="#fff" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button  Margin="1 0" Foreground="White" x:Name="btnClose" Content="&#xE8BB;"
-                Padding="0 1 1 0"
-                VerticalContentAlignment="Bottom"
-                DockPanel.Dock="Right"
-                Click="btnClose_Click"
-                WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand">
+                <Button
+                    x:Name="btnClose"
+                    Margin="1,0"
+                    Padding="1,1,1,0"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Bottom"
+                    Click="btnClose_Click"
+                    Content="&#xE8BB;"
+                    Cursor="Hand"
+                    DockPanel.Dock="Right"
+                    Foreground="White"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Grid x:Name="LayoutRoot" Background="Transparent" Width="44" Height="30">
-                                <TextBlock x:Name="txt" Text="{TemplateBinding Content}"
-                                   FontFamily="Segoe MDL2 Assets"
-                                   FontSize="10" 
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   RenderOptions.ClearTypeHint="Auto"
-                                   TextOptions.TextRenderingMode="Aliased"
-                                   TextOptions.TextFormattingMode="Display"
-                                   Margin="{TemplateBinding Padding}"/>
+                            <Grid
+                                x:Name="LayoutRoot"
+                                Width="32"
+                                Height="24"
+                                Background="Transparent">
+                                <TextBlock
+                                    x:Name="txt"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    FontSize="10"
+                                    RenderOptions.ClearTypeHint="Auto"
+                                    Text="{TemplateBinding Content}"
+                                    TextOptions.TextFormattingMode="Display"
+                                    TextOptions.TextRenderingMode="Aliased" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#E5E50C0C"/>
-                                    <Setter TargetName="txt" Property="Foreground" Value="#ffffff"/>
+                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#E5E50C0C" />
+                                    <Setter TargetName="txt" Property="Foreground" Value="#ffffff" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-            </StackPanel> 
+            </StackPanel>
         </Grid>
 
+        <DockPanel
+            Grid.Row="1"
+            Panel.ZIndex="91"
+            Background="{DynamicResource PrymaryPlayerColor}">
 
-        <DockPanel Grid.Row="1" Panel.ZIndex="91"   Background="{DynamicResource PrymaryPlayerColor}">
-
-            <views:SideMenu Panel.ZIndex="9" Margin="0 0 -300 0" Width="300" x:Name="sideMenu1"  DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+            <views:SideMenu
+                x:Name="sideMenu1"
+                Width="300"
+                Margin="0,0,-300,0"
+                HorizontalAlignment="Right"
+                Panel.ZIndex="9"
+                DockPanel.Dock="Right" />
 
             <Grid Panel.ZIndex="8" DockPanel.Dock="Right">
-                <Grid  Visibility="{Binding ElementName=playerWindow, Path=Visibility}">
-                    <TextBlock Visibility="{Binding ElementName=playerWindow, Path=Visibility}" FontWeight="DemiBold" FontSize="94" Opacity="0.4" Text="DudesPlayer" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontFamily="Sitka Display"/>
+                <Grid Visibility="{Binding ElementName=playerWindow, Path=Visibility}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="Sitka Display"
+                        FontSize="94"
+                        FontWeight="DemiBold"
+                        Foreground="Black"
+                        Opacity="0.4"
+                        Text="DudesPlayer"
+                        Visibility="{Binding ElementName=playerWindow, Path=Visibility}" />
                 </Grid>
-                <player:PlayerWindow  x:Name="PlayerWindow"  Visibility="Collapsed"/>
-                <roomsbrowser:RoomsBrowser x:Name="browser"/>
-
-
+                <player:PlayerWindow x:Name="PlayerWindow" Visibility="Collapsed" />
+                <roomsbrowser:RoomsBrowser x:Name="browser" />
             </Grid>
-
         </DockPanel>
 
-
-        <md:DialogHost  Panel.ZIndex="91"   Grid.Row="1" x:Name="PublicDalogHost"  Style="{DynamicResource MaterialDesignEmbeddedDialogHost}"    Grid.RowSpan="2">
-        </md:DialogHost>
-        <wpfui:Card  Panel.ZIndex="91"   Background="{DynamicResource PrymaryBackgroundColor}" Visibility="Collapsed" Name="DebugCard"  Grid.Row="1" Width="800" Margin="32" HorizontalAlignment="Left" Padding="16 16 0 16">
+        <md:DialogHost
+            x:Name="PublicDalogHost"
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Panel.ZIndex="91"
+            Style="{DynamicResource MaterialDesignEmbeddedDialogHost}" />
+        <wpfui:Card
+            Name="DebugCard"
+            Grid.Row="1"
+            Width="800"
+            Margin="32"
+            Padding="16,16,0,16"
+            HorizontalAlignment="Left"
+            Panel.ZIndex="91"
+            Background="{DynamicResource PrymaryBackgroundColor}"
+            Visibility="Collapsed">
             <ScrollViewer Margin="16">
-                <VirtualizingStackPanel x:Name="DebugStack">
-
-                </VirtualizingStackPanel>
+                <VirtualizingStackPanel x:Name="DebugStack" />
             </ScrollViewer>
         </wpfui:Card>
-        <wpfui:Snackbar  Panel.ZIndex="91"  
-                x:Name="RootSnackbar"
-                Title="Hello World!"
-                Grid.Row="0"
-                Grid.RowSpan="2"
-                Grid.Column="1"
-                MaxWidth="600"
-                Icon="PuzzlePiece24"
-                Message="Remember that the Heat Death of Universe is coming someday, no time to explain - let's go!"
-                Timeout="5000" />
-
+        <wpfui:Snackbar
+            x:Name="RootSnackbar"
+            Title="Hello World!"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            MaxWidth="600"
+            Panel.ZIndex="91"
+            Icon="PuzzlePiece24"
+            Timeout="5000" />
     </Grid>
-
 </Window>

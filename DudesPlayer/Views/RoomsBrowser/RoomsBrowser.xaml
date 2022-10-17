@@ -5,17 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DudesPlayer.Views.RoomsBrowser"
              xmlns:md="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
-             xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+             xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <wpfui:Card>
-        <Grid>
+    <wpfui:Card Focusable="False" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <Grid Focusable="False">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <wpfui:Button Appearance="Secondary" Margin="0 8 8 8"  HorizontalAlignment="Left" Click="Button_Click">
+                <wpfui:Button Focusable="False" Appearance="Secondary" Margin="0 8 8 8"  HorizontalAlignment="Left" Click="Button_Click">
                     <StackPanel Orientation="Horizontal">
                         <md:PackIcon Kind="Refresh" VerticalAlignment="Center" Width="22" Height="22"/>
                         <Label Content="Refresh" VerticalAlignment="Center" Margin="8 4 4 0" />

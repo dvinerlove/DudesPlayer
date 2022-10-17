@@ -1,4 +1,4 @@
-﻿using ClassLibrary.Models;
+﻿using DudesPlayer.Library.Models;
 using CrashReporterDotNET;
 using DudesPlayer.Classes;
 using System;
@@ -14,6 +14,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using DudesPlayer.Library;
 
 namespace DudesPlayer
 {
@@ -27,24 +28,23 @@ namespace DudesPlayer
         //public static User CurrentUser { get; set; }
         //public static List<User> UserList { get; internal set; } = new List<User>();
 
-
         public App()
         {
 
-            ClientData.BaseUrl = "http://dudesplayer.somee.com";
+            ClientData.BaseUrl = Settings.BaseUrl; // "http://dudesplayer.somee.com";
             if (File.Exists("api.txt"))
             {
                 ClientData.BaseUrl = File.ReadAllText("api.txt");
             }
             ClientData.EventsUrl = "ws://144.217.180.130:41235/";
 
-            ClientData.Client = new ClassLibrary.Client.Client();
+            ClientData.Client = new DudesPlayer.Library.Client.Client();
             ClientData.Client.SetUri(ClientData.BaseUrl);
             DudesPlayer.Properties.Settings.Default.Upgrade();
         }
 
 
-        public static event EventHandler UpdateFieldsEvent; 
+        public static event EventHandler UpdateFieldsEvent;
         internal static void Update()
         {
             UpdateFieldsEvent?.Invoke(null, EventArgs.Empty);
