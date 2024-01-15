@@ -41,11 +41,6 @@ namespace DudesPlayer.Api.Controllers
         public Responce Delete([FromBody] string value)
         {
             return ServerEventHandler.Action(value, JsonType.Users, ActionType.Remove);
-        }
-
-
+        } 
     }
-
-
-
 }

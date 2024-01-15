@@ -14,6 +14,8 @@ builder.Services.AddSignalR();
 
 var app = builder.Build();
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -22,8 +24,8 @@ if (app.Environment.IsDevelopment())
 {
 }
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -36,6 +38,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
     endpoints.MapHub<ChatHub>("/chat");
 });
+
 try
 {
     SocketServer.Start();

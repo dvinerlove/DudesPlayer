@@ -33,7 +33,7 @@ namespace DudesPlayer.Views.SideBar.Dialogs
             Properties.Settings.Default.Save();
         }
 
-        private readonly string zipWebLink = "http://192.168.196.110/vlc.zip";
+        private readonly string zipWebLink = "";//= "http://192.168.196.110/vlc.zip";
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +68,7 @@ namespace DudesPlayer.Views.SideBar.Dialogs
                 Save();
                 return;
             }
-            
+
             if (File.Exists(myTempFile))
             {
                 File.Delete(myTempFile);

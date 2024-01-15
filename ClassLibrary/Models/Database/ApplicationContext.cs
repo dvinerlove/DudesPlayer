@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DudesPlayer.Library.Models;
 using System.Data.Common;
-using DudesPlayer.Library.Models.Database;
 
 public class ApplicationContext : DbContext
 {
@@ -13,6 +12,6 @@ public class ApplicationContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(Connection.String); //"Server=(localdb)\\mssqllocaldb;Initial Catalog=DB1;Database=aboba1;Trusted_Connection=True;");
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=test;Username=postgres;Password=password;CommandTimeout=6000"); //"Server=(localdb)\\mssqllocaldb;Initial Catalog=DB1;Database=aboba1;Trusted_Connection=True;");
     }
 }

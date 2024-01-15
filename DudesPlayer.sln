@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DudesPlayer.Api", "DudesPla
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DudesPlayer.Desktop", "DudesPlayer.Desktop\DudesPlayer.Desktop.csproj", "{4A3B54A0-359F-4413-A157-9200E46C5E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiDesktopApp1", "UiDesktopApp1\UiDesktopApp1.csproj", "{284EA817-60DA-4515-BE8B-FCC31BD488EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UiDesktopApp1", "UiDesktopApp1\UiDesktopApp1.csproj", "{284EA817-60DA-4515-BE8B-FCC31BD488EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebApplication1", "TestWebApplication1\TestWebApplication1.csproj", "{DEC7EFE6-02E1-4429-95E8-B5FA54C926A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{284EA817-60DA-4515-BE8B-FCC31BD488EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{284EA817-60DA-4515-BE8B-FCC31BD488EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{284EA817-60DA-4515-BE8B-FCC31BD488EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC7EFE6-02E1-4429-95E8-B5FA54C926A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC7EFE6-02E1-4429-95E8-B5FA54C926A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC7EFE6-02E1-4429-95E8-B5FA54C926A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC7EFE6-02E1-4429-95E8-B5FA54C926A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

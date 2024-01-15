@@ -13,7 +13,7 @@ namespace DudesPlayer.Library.Models
         {
             Username = "";
             RoomName = "";
-            AvatarId = ""; ;
+            AvatarId = "";
         }
 
         public UserModel(string username, string room,string avatarId)

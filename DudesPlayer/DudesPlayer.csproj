@@ -172,9 +172,9 @@
     <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.2.3" />
     <PackageReference Include="MegaApiClient" Version="1.10.2" />
     <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="RandomFriendlyNameGenerator" Version="1.0.7" />
     <PackageReference Include="RestSharp" Version="106.15.0" />
     <PackageReference Include="SharpGrabber" Version="2.1.0" />

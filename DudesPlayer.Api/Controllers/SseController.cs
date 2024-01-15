@@ -45,8 +45,10 @@ namespace DudesPlayer.Api.Controllers
                         return;
                     }
                 }
+
                 db.Events.Remove(sse);
                 db.SaveChanges();
+
                 await HttpContext.SSESendEventAsync(
                 new SSEEvent(sse.Type, sse.DataJson)
                 {

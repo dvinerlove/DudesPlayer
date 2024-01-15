@@ -9,6 +9,6 @@ namespace DudesPlayer.Library
     public static class Settings
     {
         //public static String BaseUrl { get { return "http://localhost:8082"; } }
-        public static String BaseUrl { get { return "http://192.168.196.110"; } }
+        public static String BaseUrl { get { return "http://localhost:8082"; } }
     }
 }
